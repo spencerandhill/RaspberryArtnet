@@ -1,0 +1,17 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.files-item.ng-enter {
+    -webkit-transition: 0.5s linear all;
+    transition:0.5s linear all;
+    background-color: lawngreen;
+}
+
+.files-item.ng-enter.active {
+    background-color: white;
+}

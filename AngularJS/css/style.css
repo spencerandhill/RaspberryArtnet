@@ -1,0 +1,32 @@
+body {
+  padding-top: 50px;
+}
+
+.jumbotron {                            /*Einstellungen für die Jumbotrons, die den Inhalt beinhalten*/
+    background-color:#615858;
+    color:#FFFFFF;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+#startpage {                            /*Einstellungen für die Startpage, mit der Willkommensnachricht*/
+    text-align: center;
+    padding:15px;
+    padding-bottom: 20px;
+}
+
+#searchbox {                            /*Die Searchbox muss die Schriftart ändern, sonst würde weiße Schrift auf weißen Hintergrund treffen*/
+    color:#000000;
+}
+
+table, th , td {
+     border: 1px solid grey;
+     border-collapse: collapse;
+     padding: 5px;
+ }
+table tr:nth-child(odd) {
+    background-color: #615858;
+}
+table tr:nth-child(even) {
+    background-color: #908484;
+}

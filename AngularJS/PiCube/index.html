@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de" ng-app="picube">  <!-- sagt angular, wie das module heißt ('picube') -->
+<head>
+ <meta charset="utf8" />
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PiCube</title>
+  <link rel="icon" href="../favicon/favicon.ico">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Navigation ein-/ausblenden</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#startpage">Start</a></li>
+          <li><a href="#upload">Datei hochladen</a></li>
+          <li><a href="#management">Dateimanager</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Welcome-Greetings -->
+  <div class="container" id="startpage">
+    <h1>Welcome to PiCube!</h1>
+    <h2>Please Choose a File to play</h2>
+  </div>
+
+  <!-- Upload File -->
+  <div class="container" id="upload">
+    <div class="jumbotron">
+      <h2>Datei hochladen</h2>
+      <p>Dateipfad angeben: </p>
+    </div>
+  </div>
+
+  <!-- List, Play and Delete Files -->
+  <div class="container" id="management">
+    <div class="jumbotron">
+      <h2>Dateimanager</h2>
+
+      <!-- AngularJS -->
+      <br/>
+      <div class="container">
+        <p style="font-size: 15px">Bitte Suchbegriff eingeben</p>
+        <form>
+          <input type="text" ng-model="searchtext" id="searchbox">
+        </form>
+        <br/>
+        <p style="font-size:15px">Suchbegriff: {{searchtext}}</p>
+      </div>
+
+      <br/>
+      <p>Diese Dateien sind vorhanden</p>
+
+      <div ng-controller="FileCtrl">
+        <div ng-hide="files.length" class="alert alert-warning">Noch keine Files vorhanden!</div>
+        <table ng-show="files.length" class="table">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Path</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr ng-repeat="file in filtered = (files | filter:searchtext | orderBy: 'name')" class="files-item">
+            <td>{{file.id}}</td>
+            <td>{{file.name}}</td>
+            <td>{{file.path}}</td>
+            <td><a href class="btn btn-default btn-sm" ng-click="fileFactory.playFile(file);">Play</a></td>
+            <td><a href class="btn btn-default btn-sm" ng-click="fileFactory.removeFile(file);">Delete</a> </td>
+          </tr>
+        </table>
+
+        <div ng-show="searchtext" class="text"
+          <p>Gefundene Dateien: {{filtered.length}}</p>
+        </div>
+        <div ng-hide="searchtext" class="text"
+             <p>Es werden alle Dateien angezeigt, da das Suchwort leer ist</p>
+      </div>
+        <p>Gesamtanzahl Dateien: {{files.length}}</p>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="../js/jquery-1.11.2.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+
+  <!-- AngularJS -->
+  <script src="../js/angular.js"></script>
+  <script src="../js/angular-animate.js"></script>
+  <script src="app.js"></script>        <!-- Hier wird die eigentliche App geladen mit allen Modulen darin -->
+</body>
+</html>
