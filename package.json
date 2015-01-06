@@ -1,0 +1,16 @@
+{
+  "name"         : "RaspberryArtnet-REST",
+  "version"      : "0.0.0",
+  "description"  : "Simple API for AngularJS-Frontend of RaspberryArtnet",
+  "main"         : "server.js",
+  "author"       : "Jan Rathmer",
+  "dependencies" : {
+    "express"    : "~4.7.2",
+    "mongoose"   : "~3.6.2",
+    "morgan"     : "~1.2.2",
+    "body-parser": "~1.5.2",
+    "method-override": "~2.1.2",
+    "pcap-parser": "0.2.1",
+    "multer": "0.1.6"
+    }
+}
