@@ -23,6 +23,10 @@ body {
     color:#000000;
 }
 
+.blacktext {
+    color:#615858;
+}
+
 table, th , td {
      border: 1px solid grey;
      border-collapse: collapse;
@@ -34,3 +38,6 @@ table tr:nth-child(odd) {
 table tr:nth-child(even) {
     background-color: #908484;
 }
+
+.drop-zone { border: dotted 3px lightgray; }
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */

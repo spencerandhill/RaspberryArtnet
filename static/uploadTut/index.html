@@ -3,24 +3,13 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular/angular-route.js"></script>
+    <script src="app.js"></script>
 </head>
 <body>
 <div ng-app="app">
-    <div ng-controller="AppController">
-        <input type="file" nv-file-select uploader="uploader"/><br/>
-        <ul>
-            <li ng-repeat="item in uploader.queue">
-                Name: <span ng-bind="item.file.name"></span><br/>
-                <button ng-click="item.upload()">upload</button>
-            </li>
-        </ul>
-    </div>
-
-    <form method="post" enctype="multipart/form-data" action="http://localhost:8080/api/upload">
-        <input type="file" name="userFile">
-        <input type="submit">
-    </form>
-
+    <ng-view></ng-view>
 </div>
 </body>
 </html>

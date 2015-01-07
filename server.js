@@ -32,7 +32,7 @@
     });
 
 // define model =================
-    var Files = mongoose.model('Files', {
+    var dbFiles = mongoose.model('Files', {
         name : String,
         path : String
     });
@@ -52,7 +52,7 @@
     server.get('/api/files', function(req, res, next) {
 
         // use mongoose to get all files in the database
-        Files.find(function(err, files) {
+        dbFiles.find(function(err, files) {
 
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
             if (err)
@@ -66,9 +66,9 @@
     server.post('/api/files', function(req, res, next) {
         // create a file, information comes from AJAX request from Angular
         var filepath = req.body.path;
-        var filename = "testname";    //generate name from path
+        var filename = filepath.split('.')[filepath.split('.').length - 2]; //generate name from path
         
-        Files.create({
+        dbFiles.create({
             name : filename,
             path : filepath
         }, function(err, files) {
@@ -76,7 +76,7 @@
                 res.send(err);
 
             // get and return all the files after you create another
-            Files.find(function(err, files) {
+            dbFiles.find(function(err, files) {
                 if (err)
                     res.send(err)
                 res.json(files);
@@ -87,7 +87,7 @@
 
     // delete a file
     server.delete('/api/files/:file_id', function(req, res, next) {
-       Files.remove({
+       dbFiles.remove({
             _id : req.params.file_id
         }, function(err, files) {
             console.log(err);
@@ -95,7 +95,7 @@
                 res.send(err);
 
             // get and return all the files after you create another
-            Files.find(function(err, files) {
+            dbFiles.find(function(err, files) {
                 if (err)
                     res.send(err)
                 res.json(files);
@@ -105,20 +105,20 @@
 
     // upload a file
     server.post('/api/upload', function (req, res) {
-        if (req.files.userFile.name.split('.').pop() == 'artdmx')  //check, if extension is == 'artdmx'
-        {                                                       //valid artdmx-file
-            var name = req.files.userFile.name;
-            name = name.split('.')[name.split('.').length - 2]; //cuts the extension '.artdmx'
+        if (req.files.file.originalname.split('.').pop() == 'pcap')  //check, if extension is == 'pcap'
+        {                                                       //valid pcap-file
+            var name = req.files.file.originalname;
+            name = name.split('.')[name.split('.').length - 2]; //cuts the extension '.pcap'
 
-            res.send({artdmx: true, name: name, file: req.files.userFile.name, _id:5});
+            res.send({pcap: true, name: name, file: req.files.file.originalname, _id:5});
         }
         else
-        {                                                       //not a valid artdmx-file
-            var name = req.files.userFile.name;
-            name = name.split('.')[name.split('.').length - 2]; //cuts the extension '.artdmx'
+        {                                                       //not a valid pcap-file
+            var name = req.files.file.originalname;
+            name = name.split('.')[name.split('.').length - 2]; //cuts the extension '.pcap'
 
-            console.log("no artdmx-file!");
-            res.send({artdmx: false, name: name, file: req.files.userFile.name, _id:-1});
+            console.log("no pcap-file!");
+            res.send({pcap: false, name: name, file: req.files.file.originalname, _id:-1});
         }
     });
 

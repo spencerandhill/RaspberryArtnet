@@ -1,0 +1,48 @@
+<!-- List, Play and Delete Files -->
+<div class="container" id="management">
+    <div class="jumbotron">
+        <h3>Start</h3>
+
+        <!-- AngularJS -->
+        <br/>
+        <div class="container">
+            <p style="font-size: 15px">Bitte Suchbegriff eingeben</p>
+            <form>
+                <input type="text" ng-model="searchtext" id="searchbox">
+            </form>
+            <br/>
+            <p style="font-size:15px">Suchbegriff: {{searchtext}}</p>
+        </div>
+
+        <br/>
+        <p>Diese Dateien sind vorhanden</p>
+
+        <div ng-controller="FileCtrl">
+            <div ng-hide="files.length" class="alert alert-warning">Noch keine Files vorhanden!</div>
+            <table ng-show="files.length" class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Path</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="file in filtered = (files | filter:searchtext | orderBy: 'name')" class="files-item">
+                    <td>{{file._id}}</td>
+                    <td>{{file.name}}</td>
+                    <td>{{file.path}}</td>
+                    <td><a href class="btn btn-success btn-xs" ng-click="fileFactory.playFile(file);"><span class="glyphicon glyphicon-play"></span> Abspielen</a></td>
+                    <td><a href class="btn btn-danger btn-xs" ng-click="fileFactory.removeFile(file._id);"><span class="glyphicon glyphicon-trash"></span> Entfernen</a> </td>
+                </tr>
+            </table>
+        </div>
+        <div ng-show="searchtext" class="text"
+        <p>Gefundene Dateien: {{filtered.length}}</p>
+    </div>
+    <div ng-hide="searchtext" class="text"
+    <p>Es werden alle Dateien angezeigt, da das Suchwort leer ist</p>
+</div>
+<p>Gesamtanzahl Dateien: {{files.length}}</p>
+</div>
+</div>
+</div>
