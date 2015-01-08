@@ -6,11 +6,12 @@
   "author"       : "Jan Rathmer",
   "dependencies" : {
     "express"    : "~4.7.2",
-    "mongoose"   : "~3.6.2",
     "morgan"     : "~1.2.2",
     "body-parser": "~1.5.2",
     "method-override": "~2.1.2",
     "pcap-parser": "0.2.1",
-    "multer": "0.1.6"
+    "multer": "0.1.6",
+    "walk": "2.3.9",
+    "node-uuid": "1.4.2"
     }
 }
