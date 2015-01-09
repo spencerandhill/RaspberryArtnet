@@ -1,4 +1,4 @@
-// set up ========================
+// set-up ======================================================================
     var express  = require('express');
     var server = express();                     // create our server w/ express
     var multer = require('multer');             // used for File-Upload
@@ -10,8 +10,9 @@
 
     var uploadFolder = 'static/uploads';        //Define Upload-Folder for all Actions with Files
     var files   = [];                           //Stores file-items
+    var openConnections = [];                   //Stores the opened Connections to clients (for push-notifications)
 
-    // configuration =================
+// configuration ======================================================================
 
     server.use(morgan('dev'));                                         // log every request to the console
     server.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
@@ -43,7 +44,27 @@
         }
     }));
 
-//Functions
+// Functions ======================================================================
+
+    var checkConnections = function() {
+        //walk through each connection
+        openConnections.forEach(function(resp) {
+            resp.write('data: ' + createMsg() + '\n\n');    //Response with Message
+        })
+    }
+
+    //sends periodically push-notifications
+    setInterval(function() {
+        checkConnections();
+    }, 10);  //Every 10 Milliseconds
+
+    //Create Push-Notification-Message
+    function createMsg() {
+        var msg = {};
+
+        msg.status = "Ready";
+        return JSON.stringify(msg);
+    }
 
     //checks, if every file in files[] is still available on the server
     //if not, it is removed from files[]
@@ -135,6 +156,39 @@
 // routes ======================================================================
 
     // api ---------------------------------------------------------------------
+    //check Push-Notification
+    server.get('/api/stats', function(req, res) {
+
+        //set Timeout as high as possible
+        req.socket.setTimeout(Infinity);
+
+        //send headers for event-stream connection
+        res.writeHead(200, {
+            'Content-Type': 'text/event-stream',
+            'Cache-Control': 'no-cache',
+            'Connection': 'keep-alive'
+        });
+
+        res.write('\n');
+
+        //push this res object to global Connections
+        openConnections.push(res);
+
+        //When request is closed, e.g. browser window is closed
+        //search through open connections and remove this
+        req.on("close", function() {
+            var i;
+            for(i=0;i<openConnections.length;i++) {
+                if(openConnections[i] == res) {
+                    toRemove = i;
+                    break;
+                }
+            }
+            openConnections.splice(i, 1);
+            console.log(openConnections.length);
+        });
+    });
+
     // get all files
     server.get('/api/files', function(req, res, next) {
         getFolderContent(function(files) {
@@ -172,6 +226,12 @@
         }
     });
 
-    // listen (start server with node server.js) ======================================
+    server.get('/api/play/:file_id', function(req, res, next) {
+       getFilePath(req.params.file_id, function(filepath) {
+           console.log("This file will be played: " + filepath);
+       })
+    });
+
+// listen (start server with node server.js) ======================================
     server.listen(8080);
     console.log("server listening on port 8080");

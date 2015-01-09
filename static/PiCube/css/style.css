@@ -2,20 +2,20 @@ body {
   padding-top: 50px;
 }
 
-.jumbotron {                            /*Einstellungen für die Jumbotrons, die den Inhalt beinhalten*/
+.jumbotron {                            /*Settings for Jumbotrons, which contains the content*/
     background-color:#615858;
     color:#FFFFFF;
     padding-left: 150px;
     padding-right: 150px;
 }
 
-#startpage {                            /*Einstellungen für die Startpage, mit der Willkommensnachricht*/
+#startpage {                            /*Settings for Welcome-Page*/
     text-align: center;
     padding:15px;
     padding-bottom: 20px;
 }
 
-#searchbox {                            /*Die Searchbox muss die Schriftart ändern, sonst würde weiße Schrift auf weißen Hintergrund treffen*/
+#searchbox {                            /*searchbox-color has to be black, otherwise it would be white color on white background*/
     color:#000000;
 }
 
@@ -27,6 +27,7 @@ body {
     color:#615858;
 }
 
+/*Edit Table-Style */
 table, th , td {
      border: 1px solid grey;
      border-collapse: collapse;
@@ -39,5 +40,6 @@ table tr:nth-child(even) {
     background-color: #908484;
 }
 
+/*Upload-Section*/
 .drop-zone { border: dotted 3px lightgray; }
-.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+.nv-file-over { border: dotted 3px green; } /* Default class applied to drop zones on over */

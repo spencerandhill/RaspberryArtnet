@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en" class="">
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
@@ -6,7 +10,7 @@
     <meta http-equiv="Content-Language" content="en">
     
     
-    <title>es5-shim/es5-shim.min.js at master · es-shims/es5-shim</title>
+    <title>es5-shim/es5-shim.map at master · es-shims/es5-shim · GitHub</title>
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png">
@@ -21,16 +25,16 @@
       <meta name="browser-stats-url" content="/_stats">
     <link rel="assets" href="https://assets-cdn.github.com/">
     <link rel="conduit-xhr" href="https://ghconduit.com:25035">
-    <link rel="xhr-socket" href="/_sockets">
+    
     <meta name="pjax-timeout" content="1000">
-    <link rel="sudo-modal" href="/sessions/sudo_modal">
+    
 
     <meta name="msapplication-TileImage" content="/windows-tile.png">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="selected-link" value="repo_source" data-pjax-transient>
       <meta name="google-analytics" content="UA-3769691-2">
 
-    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="collector-cdn.github.com" name="octolytics-script-host" /><meta content="github" name="octolytics-app-id" /><meta content="5080E81D:68EC:41DB82:54AD3C21" name="octolytics-dimension-request_id" /><meta content="9363597" name="octolytics-actor-id" /><meta content="spencerandhill" name="octolytics-actor-login" /><meta content="5b0bd51b4cb101a64b4866f63f8dbd25652a6dde076fe46ae0d8ef0f0b65a09b" name="octolytics-actor-hash" />
+    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="collector-cdn.github.com" name="octolytics-script-host" /><meta content="github" name="octolytics-app-id" /><meta content="5080E81D:37B9:19F9F48:54AF0739" name="octolytics-dimension-request_id" />
     
     <meta content="Rails, view, blob#show" name="analytics-event" />
 
@@ -40,15 +44,15 @@
 
 
     <meta content="authenticity_token" name="csrf-param" />
-<meta content="BrB3nlP7ltJucdXHvPdL80FvBZy0POizoci+j+3PtKikkBS3D3Uvg84hMIbJ3l6+g8fnOZOVR7qyI+8TsXdssw==" name="csrf-token" />
+<meta content="NY+TQKnw7hGxqlSg7cj44WZ66jrNt7d3r7qnqzQP4AEmHJk6upMC7MyvEgFADolrYViOQazXN+IKbZ6QDHitIg==" name="csrf-token" />
 
-    <link href="https://assets-cdn.github.com/assets/github-da5200f93aaeb15e21a7b6b64385a334ba72ccb61687685e7e02dfc0b6a2ec1d.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="https://assets-cdn.github.com/assets/github2-7db4c7ec8e8941c3b226bc8a9ec014bbe1ec0a320cbdfcb7600d7f6a4a184b37.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="https://assets-cdn.github.com/assets/github-7b11ae857921a5314c8c6833845d08859046adf23c764e9f14e31a6dadae9071.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="https://assets-cdn.github.com/assets/github2-c81d1566689852c2c43097d424735ea531962a7599ad515afcc4a649ce814da7.css" media="all" rel="stylesheet" type="text/css" />
     
     
 
 
-    <meta http-equiv="x-pjax-version" content="6db4f9d9d53d63a77eff6271ad17a381">
+    <meta http-equiv="x-pjax-version" content="6dc0cfb0622456e43e51259a1a7749ab">
 
       
   <meta name="description" content="es5-shim - ECMAScript 5 compatibility shims for legacy JavaScript engines">
@@ -60,7 +64,7 @@
   </head>
 
 
-  <body class="logged_in  env-production linux vis-public page-blob">
+  <body class="logged_out  env-production linux vis-public page-blob">
     <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
     <div class="wrapper">
       
@@ -69,16 +73,21 @@
       
 
 
-      <div class="header header-logged-in true" role="banner">
+      
+      <div class="header header-logged-out" role="banner">
   <div class="container clearfix">
 
-    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" ga-data-click="Header, go to dashboard, icon:logo">
-  <span class="mega-octicon octicon-mark-github"></span>
-</a>
+    <a class="header-logo-wordmark" href="https://github.com/" ga-data-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+      <span class="mega-octicon octicon-logo-github"></span>
+    </a>
 
+    <div class="header-actions" role="navigation">
+        <a class="button primary" href="/join" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">Sign up</a>
+      <a class="button" href="/login?return_to=%2Fes-shims%2Fes5-shim%2Fblob%2Fmaster%2Fes5-shim.map" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
+    </div>
 
-      <div class="site-search repo-scope js-site-search" role="search">
-          <form accept-charset="UTF-8" action="/es-shims/es5-shim/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/es-shims/es5-shim/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+    <div class="site-search repo-scope js-site-search" role="search">
+      <form accept-charset="UTF-8" action="/es-shims/es5-shim/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/es-shims/es5-shim/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
   <input type="text"
     class="js-site-search-field is-clearable"
     data-hotkey="s"
@@ -90,92 +99,26 @@
     autocapitalize="off">
   <div class="scope-badge">This repository</div>
 </form>
-      </div>
+    </div>
+
       <ul class="header-nav left" role="navigation">
-        <li class="header-nav-item explore">
-          <a class="header-nav-link" href="/explore" data-ga-click="Header, go to explore, text:explore">Explore</a>
-        </li>
           <li class="header-nav-item">
-            <a class="header-nav-link" href="https://gist.github.com" data-ga-click="Header, go to gist, text:gist">Gist</a>
+            <a class="header-nav-link" href="/explore" data-ga-click="(Logged out) Header, go to explore, text:explore">Explore</a>
           </li>
           <li class="header-nav-item">
-            <a class="header-nav-link" href="/blog" data-ga-click="Header, go to blog, text:blog">Blog</a>
+            <a class="header-nav-link" href="/features" data-ga-click="(Logged out) Header, go to features, text:features">Features</a>
           </li>
-        <li class="header-nav-item">
-          <a class="header-nav-link" href="https://help.github.com" data-ga-click="Header, go to help, text:help">Help</a>
-        </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://enterprise.github.com/" data-ga-click="(Logged out) Header, go to enterprise, text:enterprise">Enterprise</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="/blog" data-ga-click="(Logged out) Header, go to blog, text:blog">Blog</a>
+          </li>
       </ul>
 
-    
-<ul class="header-nav user-nav right" id="user-links">
-  <li class="header-nav-item dropdown js-menu-container">
-    <a class="header-nav-link name" href="/spencerandhill" data-ga-click="Header, go to profile, text:username">
-      <img alt="spencerandhill" class="avatar" data-user="9363597" height="20" src="https://avatars0.githubusercontent.com/u/9363597?v=3&amp;s=40" width="20" />
-      <span class="css-truncate">
-        <span class="css-truncate-target">spencerandhill</span>
-      </span>
-    </a>
-  </li>
-
-  <li class="header-nav-item dropdown js-menu-container">
-    <a class="header-nav-link js-menu-target tooltipped tooltipped-s" href="#" aria-label="Create new..." data-ga-click="Header, create new, icon:add">
-      <span class="octicon octicon-plus"></span>
-      <span class="dropdown-caret"></span>
-    </a>
-
-    <div class="dropdown-menu-content js-menu-content">
-      
-<ul class="dropdown-menu">
-  <li>
-    <a href="/new"><span class="octicon octicon-repo"></span> New repository</a>
-  </li>
-  <li>
-    <a href="/organizations/new"><span class="octicon octicon-organization"></span> New organization</a>
-  </li>
-
-
-    <li class="dropdown-divider"></li>
-    <li class="dropdown-header">
-      <span title="es-shims/es5-shim">This repository</span>
-    </li>
-      <li>
-        <a href="/es-shims/es5-shim/issues/new"><span class="octicon octicon-issue-opened"></span> New issue</a>
-      </li>
-</ul>
-
-    </div>
-  </li>
-
-  <li class="header-nav-item">
-        <a href="/notifications" aria-label="You have no unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s" data-ga-click="Header, go to notifications, icon:read" data-hotkey="g n">
-        <span class="mail-status all-read"></span>
-        <span class="octicon octicon-inbox"></span>
-</a>
-  </li>
-
-  <li class="header-nav-item">
-    <a class="header-nav-link tooltipped tooltipped-s" href="/settings/profile" id="account_settings" aria-label="Settings" data-ga-click="Header, go to settings, icon:settings">
-      <span class="octicon octicon-gear"></span>
-    </a>
-  </li>
-
-  <li class="header-nav-item">
-    <form accept-charset="UTF-8" action="/logout" class="logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="5oQRndOpuZtB9/P4QdfJu5UDVFvZgmulAQSXH9P2F4AHLQ9vnsxOwIQrcYQkPPu456ftLfLkCSeU6LJdtm7woA==" /></div>
-      <button class="header-nav-link sign-out-button tooltipped tooltipped-s" aria-label="Sign out" data-ga-click="Header, sign out, icon:logout">
-        <span class="octicon octicon-sign-out"></span>
-      </button>
-</form>  </li>
-
-</ul>
-
-
-    
   </div>
 </div>
 
-      
-
-        
 
 
       <div id="start-of-content" class="accessibility-aid"></div>
@@ -188,116 +131,32 @@
         
 <ul class="pagehead-actions">
 
-    <li class="subscription">
-      <form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="frzovPzFIwK7aiKgr/YCPRuZCCXUH1f3VrC5uVR7424dwylY54VXH813Gff/W3yOGEW2X0FX7wbyJoxobJiM6Q==" /></div>  <input id="repository_id" name="repository_id" type="hidden" value="914603" />
-
-    <div class="select-menu js-menu-container js-select-menu">
-      <a class="social-count js-social-count" href="/es-shims/es5-shim/watchers">
-        158
-      </a>
-      <a href="/es-shims/es5-shim/subscription"
-        class="minibutton select-menu-button with-count js-menu-target" role="button" tabindex="0" aria-haspopup="true">
-        <span class="js-select-button">
-          <span class="octicon octicon-eye"></span>
-          Watch
-        </span>
-      </a>
-
-      <div class="select-menu-modal-holder">
-        <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
-          <div class="select-menu-header">
-            <span class="select-menu-title">Notifications</span>
-            <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
-          </div> <!-- /.select-menu-header -->
-
-          <div class="select-menu-list js-navigation-container" role="menu">
-
-            <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
-              <span class="select-menu-item-icon octicon octicon-check"></span>
-              <div class="select-menu-item-text">
-                <input checked="checked" id="do_included" name="do" type="radio" value="included" />
-                <h4>Not watching</h4>
-                <span class="description">Be notified when participating or @mentioned.</span>
-                <span class="js-select-button-text hidden-select-button-text">
-                  <span class="octicon octicon-eye"></span>
-                  Watch
-                </span>
-              </div>
-            </div> <!-- /.select-menu-item -->
-
-            <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
-              <span class="select-menu-item-icon octicon octicon octicon-check"></span>
-              <div class="select-menu-item-text">
-                <input id="do_subscribed" name="do" type="radio" value="subscribed" />
-                <h4>Watching</h4>
-                <span class="description">Be notified of all conversations.</span>
-                <span class="js-select-button-text hidden-select-button-text">
-                  <span class="octicon octicon-eye"></span>
-                  Unwatch
-                </span>
-              </div>
-            </div> <!-- /.select-menu-item -->
-
-            <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
-              <span class="select-menu-item-icon octicon octicon-check"></span>
-              <div class="select-menu-item-text">
-                <input id="do_ignore" name="do" type="radio" value="ignore" />
-                <h4>Ignoring</h4>
-                <span class="description">Never be notified.</span>
-                <span class="js-select-button-text hidden-select-button-text">
-                  <span class="octicon octicon-mute"></span>
-                  Stop ignoring
-                </span>
-              </div>
-            </div> <!-- /.select-menu-item -->
-
-          </div> <!-- /.select-menu-list -->
-
-        </div> <!-- /.select-menu-modal -->
-      </div> <!-- /.select-menu-modal-holder -->
-    </div> <!-- /.select-menu -->
-
-</form>
-    </li>
 
   <li>
-    
-  <div class="js-toggler-container js-social-container starring-container ">
+      <a href="/login?return_to=%2Fes-shims%2Fes5-shim"
+    class="minibutton with-count star-button tooltipped tooltipped-n"
+    aria-label="You must be signed in to star a repository" rel="nofollow">
+    <span class="octicon octicon-star"></span>
+    Star
+  </a>
 
-    <form accept-charset="UTF-8" action="/es-shims/es5-shim/unstar" class="js-toggler-form starred js-unstar-button" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="eajxpBCmWv876q7xybz7pvAy4br3maSdCs/RUJ0GuHHH/p3+f5As5v0DiXjJ8VnrJyrGv0Db4kVg8EFCvMP+CA==" /></div>
-      <button
-        class="minibutton with-count js-toggler-target star-button"
-        aria-label="Unstar this repository" title="Unstar es-shims/es5-shim">
-        <span class="octicon octicon-star"></span>
-        Unstar
-      </button>
-        <a class="social-count js-social-count" href="/es-shims/es5-shim/stargazers">
-          3,308
-        </a>
-</form>
-    <form accept-charset="UTF-8" action="/es-shims/es5-shim/star" class="js-toggler-form unstarred js-star-button" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="5a5akM4RuL/qbCwFpRHVmo9MDy78aNe17WfEncN9YITD0YX0oM2W7D7WcZYNGifF+aqyYsSl8TswarnNAb7xDA==" /></div>
-      <button
-        class="minibutton with-count js-toggler-target star-button"
-        aria-label="Star this repository" title="Star es-shims/es5-shim">
-        <span class="octicon octicon-star"></span>
-        Star
-      </button>
-        <a class="social-count js-social-count" href="/es-shims/es5-shim/stargazers">
-          3,308
-        </a>
-</form>  </div>
+    <a class="social-count js-social-count" href="/es-shims/es5-shim/stargazers">
+      3,312
+    </a>
 
   </li>
 
-
-        <li>
-          <a href="/es-shims/es5-shim/fork" class="minibutton with-count js-toggler-target fork-button tooltipped-n" title="Fork your own copy of es-shims/es5-shim to your account" aria-label="Fork your own copy of es-shims/es5-shim to your account" rel="nofollow" data-method="post">
-            <span class="octicon octicon-repo-forked"></span>
-            Fork
-          </a>
-          <a href="/es-shims/es5-shim/network" class="social-count">456</a>
-        </li>
-
+    <li>
+      <a href="/login?return_to=%2Fes-shims%2Fes5-shim"
+        class="minibutton with-count js-toggler-target fork-button tooltipped tooltipped-n"
+        aria-label="You must be signed in to fork a repository" rel="nofollow">
+        <span class="octicon octicon-repo-forked"></span>
+        Fork
+      </a>
+      <a href="/es-shims/es5-shim/network" class="social-count">
+        457
+      </a>
+    </li>
 </ul>
 
         <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
@@ -382,20 +241,6 @@
 
   
 <div class="clone-url "
-  data-protocol-type="ssh"
-  data-url="/users/set_protocol?protocol_selector=ssh&amp;protocol_type=clone">
-  <h3><span class="text-emphasized">SSH</span> clone URL</h3>
-  <div class="input-group js-zeroclipboard-container">
-    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target"
-           value="git@github.com:es-shims/es5-shim.git" readonly="readonly">
-    <span class="input-group-button">
-      <button aria-label="Copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
-    </span>
-  </div>
-</div>
-
-  
-<div class="clone-url "
   data-protocol-type="subversion"
   data-url="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone">
   <h3><span class="text-emphasized">Subversion</span> checkout URL</h3>
@@ -411,7 +256,7 @@
 
 
 <p class="clone-options">You can clone with
-  <a href="#" class="js-clone-selector" data-protocol="http">HTTPS</a>, <a href="#" class="js-clone-selector" data-protocol="ssh">SSH</a>, or <a href="#" class="js-clone-selector" data-protocol="subversion">Subversion</a>.
+  <a href="#" class="js-clone-selector" data-protocol="http">HTTPS</a> or <a href="#" class="js-clone-selector" data-protocol="subversion">Subversion</a>.
   <a href="https://help.github.com/articles/which-remote-url-should-i-use" class="help tooltipped tooltipped-n" aria-label="Get help on which URL is right for you.">
     <span class="octicon octicon-question"></span>
   </a>
@@ -433,9 +278,9 @@
         <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container>
           
 
-<a href="/es-shims/es5-shim/blob/c043a30047e5c2754bfba85f9d30e5084a24f2b8/es5-shim.min.js" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
+<a href="/es-shims/es5-shim/blob/c043a30047e5c2754bfba85f9d30e5084a24f2b8/es5-shim.map" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
 
-<!-- blob contrib key: blob_contributors:v21:b18a09417c096d1636e4779a57c49bf0 -->
+<!-- blob contrib key: blob_contributors:v21:af61a38c1dd68f2d1aade3f713e7a547 -->
 
 <div class="file-navigation js-zeroclipboard-container">
   
@@ -481,7 +326,7 @@
 
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/blob/js-shim/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/blob/js-shim/es5-shim.map"
                  data-name="js-shim"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -490,7 +335,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item selected">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/blob/master/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/blob/master/es5-shim.map"
                  data-name="master"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -499,7 +344,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/blob/review/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/blob/review/es5-shim.map"
                  data-name="review"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -508,7 +353,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/blob/work/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/blob/work/es5-shim.map"
                  data-name="work"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -526,7 +371,7 @@
 
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v4.0.5/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v4.0.5/es5-shim.map"
                  data-name="v4.0.5"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -535,7 +380,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v4.0.4/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v4.0.4/es5-shim.map"
                  data-name="v4.0.4"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -544,7 +389,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v4.0.3/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v4.0.3/es5-shim.map"
                  data-name="v4.0.3"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -553,7 +398,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v4.0.2/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v4.0.2/es5-shim.map"
                  data-name="v4.0.2"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -562,7 +407,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v4.0.1/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v4.0.1/es5-shim.map"
                  data-name="v4.0.1"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -571,7 +416,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v4.0.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v4.0.0/es5-shim.map"
                  data-name="v4.0.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -580,7 +425,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v3.4.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v3.4.0/es5-shim.map"
                  data-name="v3.4.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -589,7 +434,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v3.3.2/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v3.3.2/es5-shim.map"
                  data-name="v3.3.2"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -598,7 +443,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v3.3.1/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v3.3.1/es5-shim.map"
                  data-name="v3.3.1"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -607,7 +452,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v3.3.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v3.3.0/es5-shim.map"
                  data-name="v3.3.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -616,7 +461,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v3.2.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v3.2.0/es5-shim.map"
                  data-name="v3.2.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -625,7 +470,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v3.1.1/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v3.1.1/es5-shim.map"
                  data-name="v3.1.1"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -634,7 +479,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v3.1.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v3.1.0/es5-shim.map"
                  data-name="v3.1.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -643,7 +488,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v3.0.2/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v3.0.2/es5-shim.map"
                  data-name="v3.0.2"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -652,7 +497,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v3.0.1/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v3.0.1/es5-shim.map"
                  data-name="v3.0.1"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -661,7 +506,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v3.0.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v3.0.0/es5-shim.map"
                  data-name="v3.0.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -670,7 +515,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.3.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.3.0/es5-shim.map"
                  data-name="v2.3.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -679,7 +524,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.2.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.2.0/es5-shim.map"
                  data-name="v2.2.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -688,7 +533,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.1.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.1.0/es5-shim.map"
                  data-name="v2.1.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -697,7 +542,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.12/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.12/es5-shim.map"
                  data-name="v2.0.12"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -706,7 +551,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.11/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.11/es5-shim.map"
                  data-name="v2.0.11"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -715,7 +560,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.10/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.10/es5-shim.map"
                  data-name="v2.0.10"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -724,7 +569,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.9/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.9/es5-shim.map"
                  data-name="v2.0.9"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -733,7 +578,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.8/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.8/es5-shim.map"
                  data-name="v2.0.8"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -742,7 +587,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.7/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.7/es5-shim.map"
                  data-name="v2.0.7"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -751,7 +596,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.6/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.6/es5-shim.map"
                  data-name="v2.0.6"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -760,7 +605,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.5/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.5/es5-shim.map"
                  data-name="v2.0.5"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -769,7 +614,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.4/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.4/es5-shim.map"
                  data-name="v2.0.4"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -778,7 +623,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.2/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.2/es5-shim.map"
                  data-name="v2.0.2"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -787,7 +632,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.1/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.1/es5-shim.map"
                  data-name="v2.0.1"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -796,7 +641,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v2.0.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v2.0.0/es5-shim.map"
                  data-name="v2.0.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -805,7 +650,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v1.2.10/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v1.2.10/es5-shim.map"
                  data-name="v1.2.10"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -814,7 +659,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v1.2.8/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v1.2.8/es5-shim.map"
                  data-name="v1.2.8"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -823,7 +668,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v1.2.7/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v1.2.7/es5-shim.map"
                  data-name="v1.2.7"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -832,7 +677,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v1.2.4/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v1.2.4/es5-shim.map"
                  data-name="v1.2.4"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -841,7 +686,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v1.2.3/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v1.2.3/es5-shim.map"
                  data-name="v1.2.3"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -850,7 +695,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v1.2.2/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v1.2.2/es5-shim.map"
                  data-name="v1.2.2"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -859,7 +704,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v1.2.1/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v1.2.1/es5-shim.map"
                  data-name="v1.2.1"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -868,7 +713,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v1.2.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v1.2.0/es5-shim.map"
                  data-name="v1.2.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -877,7 +722,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v1.1.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v1.1.0/es5-shim.map"
                  data-name="v1.1.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -886,7 +731,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v1.0.0/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v1.0.0/es5-shim.map"
                  data-name="v1.0.0"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -895,7 +740,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v0.2.10/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v0.2.10/es5-shim.map"
                  data-name="v0.2.10"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -904,7 +749,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v0.0.4/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v0.0.4/es5-shim.map"
                  data-name="v0.0.4"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -913,7 +758,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v0.0.3/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v0.0.3/es5-shim.map"
                  data-name="v0.0.3"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -922,7 +767,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v0.0.2/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v0.0.2/es5-shim.map"
                  data-name="v0.0.2"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -931,7 +776,7 @@
             </div> <!-- /.select-menu-item -->
             <div class="select-menu-item js-navigation-item ">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/es-shims/es5-shim/tree/v0.0.1/es5-shim.min.js"
+              <a href="/es-shims/es5-shim/tree/v0.0.1/es5-shim.map"
                  data-name="v0.0.1"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -959,7 +804,7 @@
   </div>
 
   <div class="breadcrumb js-zeroclipboard-target">
-    <span class='repo-root js-repo-root'><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/es-shims/es5-shim" class="" data-branch="master" data-direction="back" data-pjax="true" itemscope="url"><span itemprop="title">es5-shim</span></a></span></span><span class="separator">/</span><strong class="final-path">es5-shim.min.js</strong>
+    <span class='repo-root js-repo-root'><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/es-shims/es5-shim" class="" data-branch="master" data-direction="back" data-pjax="true" itemscope="url"><span itemprop="title">es5-shim</span></a></span></span><span class="separator">/</span><strong class="final-path">es5-shim.map</strong>
   </div>
 </div>
 
@@ -968,24 +813,21 @@
     <div class="file-history-tease-header">
         <img alt="Jordan Harband" class="avatar" data-user="45469" height="24" src="https://avatars2.githubusercontent.com/u/45469?v=3&amp;s=48" width="24" />
         <span class="author"><a href="/ljharb" rel="contributor">ljharb</a></span>
-        <time datetime="2014-11-28T17:52:20Z" is="relative-time">Nov 28, 2014</time>
+        <time datetime="2014-11-28T17:42:19Z" is="relative-time">Nov 28, 2014</time>
         <div class="commit-title">
-            <a href="/es-shims/es5-shim/commit/33bbe095f4fb4fea0a3d5b06610aaedf3818339e" class="message" data-pjax="true" title="v4.0.5">v4.0.5</a>
+            <a href="/es-shims/es5-shim/commit/a6b004aba64d42306f80a8a3963df650c5c91026" class="message" data-pjax="true" title="v4.0.4">v4.0.4</a>
         </div>
     </div>
 
     <div class="participation">
       <p class="quickstat">
         <a href="#blob_contributors_box" rel="facebox">
-          <strong>5</strong>
+          <strong>2</strong>
            contributors
         </a>
       </p>
-          <a class="avatar-link tooltipped tooltipped-s" aria-label="ljharb" href="/es-shims/es5-shim/commits/master/es5-shim.min.js?author=ljharb"><img alt="Jordan Harband" class="avatar" data-user="45469" height="20" src="https://avatars0.githubusercontent.com/u/45469?v=3&amp;s=40" width="20" /></a>
-    <a class="avatar-link tooltipped tooltipped-s" aria-label="kriskowal" href="/es-shims/es5-shim/commits/master/es5-shim.min.js?author=kriskowal"><img alt="Kris Kowal" class="avatar" data-user="60294" height="20" src="https://avatars0.githubusercontent.com/u/60294?v=3&amp;s=40" width="20" /></a>
-    <a class="avatar-link tooltipped tooltipped-s" aria-label="Gozala" href="/es-shims/es5-shim/commits/master/es5-shim.min.js?author=Gozala"><img alt="Irakli Gozalishvili" class="avatar" data-user="21236" height="20" src="https://avatars3.githubusercontent.com/u/21236?v=3&amp;s=40" width="20" /></a>
-    <a class="avatar-link tooltipped tooltipped-s" aria-label="iwyg" href="/es-shims/es5-shim/commits/master/es5-shim.min.js?author=iwyg"><img alt="Thomas Appel" class="avatar" data-user="718537" height="20" src="https://avatars1.githubusercontent.com/u/718537?v=3&amp;s=40" width="20" /></a>
-    <a class="avatar-link tooltipped tooltipped-s" aria-label="termi" href="/es-shims/es5-shim/commits/master/es5-shim.min.js?author=termi"><img alt="Егор Халимоненко" class="avatar" data-user="973643" height="20" src="https://avatars0.githubusercontent.com/u/973643?v=3&amp;s=40" width="20" /></a>
+          <a class="avatar-link tooltipped tooltipped-s" aria-label="ljharb" href="/es-shims/es5-shim/commits/master/es5-shim.map?author=ljharb"><img alt="Jordan Harband" class="avatar" data-user="45469" height="20" src="https://avatars0.githubusercontent.com/u/45469?v=3&amp;s=40" width="20" /></a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="kriskowal" href="/es-shims/es5-shim/commits/master/es5-shim.map?author=kriskowal"><img alt="Kris Kowal" class="avatar" data-user="60294" height="20" src="https://avatars0.githubusercontent.com/u/60294?v=3&amp;s=40" width="20" /></a>
 
 
     </div>
@@ -1000,18 +842,6 @@
             <img alt="Kris Kowal" data-user="60294" height="24" src="https://avatars2.githubusercontent.com/u/60294?v=3&amp;s=48" width="24" />
             <a href="/kriskowal">kriskowal</a>
           </li>
-          <li class="facebox-user-list-item">
-            <img alt="Irakli Gozalishvili" data-user="21236" height="24" src="https://avatars1.githubusercontent.com/u/21236?v=3&amp;s=48" width="24" />
-            <a href="/Gozala">Gozala</a>
-          </li>
-          <li class="facebox-user-list-item">
-            <img alt="Thomas Appel" data-user="718537" height="24" src="https://avatars3.githubusercontent.com/u/718537?v=3&amp;s=48" width="24" />
-            <a href="/iwyg">iwyg</a>
-          </li>
-          <li class="facebox-user-list-item">
-            <img alt="Егор Халимоненко" data-user="973643" height="24" src="https://avatars2.githubusercontent.com/u/973643?v=3&amp;s=48" width="24" />
-            <a href="/termi">termi</a>
-          </li>
       </ul>
     </div>
   </div>
@@ -1020,62 +850,34 @@
   <div class="file">
     <div class="meta clearfix">
       <div class="info file-name">
-          <span>7 lines (7 sloc)</span>
+          <span>1 lines (1 sloc)</span>
           <span class="meta-divider"></span>
-        <span>14.285 kb</span>
+        <span>21.78 kb</span>
       </div>
       <div class="actions">
         <div class="button-group">
-          <a href="/es-shims/es5-shim/raw/master/es5-shim.min.js" class="minibutton " id="raw-url">Raw</a>
-            <a href="/es-shims/es5-shim/blame/master/es5-shim.min.js" class="minibutton js-update-url-with-hash">Blame</a>
-          <a href="/es-shims/es5-shim/commits/master/es5-shim.min.js" class="minibutton " rel="nofollow">History</a>
+          <a href="/es-shims/es5-shim/raw/master/es5-shim.map" class="minibutton " id="raw-url">Raw</a>
+            <a href="/es-shims/es5-shim/blame/master/es5-shim.map" class="minibutton js-update-url-with-hash">Blame</a>
+          <a href="/es-shims/es5-shim/commits/master/es5-shim.map" class="minibutton " rel="nofollow">History</a>
         </div><!-- /.button-group -->
 
 
-              <a class="octicon-button tooltipped tooltipped-n js-update-url-with-hash"
-                 aria-label="Clicking this button will fork this project so you can edit the file"
-                 href="/es-shims/es5-shim/edit/master/es5-shim.min.js"
-                 data-method="post" rel="nofollow"><span class="octicon octicon-pencil"></span></a>
+            <a class="octicon-button disabled tooltipped tooltipped-w" href="#"
+               aria-label="You must be signed in to make or propose changes"><span class="octicon octicon-pencil"></span></a>
 
-            <a class="octicon-button danger tooltipped tooltipped-s"
-               href="/es-shims/es5-shim/delete/master/es5-shim.min.js"
-               aria-label="Fork this project and delete file"
-               data-method="post" data-test-id="delete-blob-file" rel="nofollow">
+          <a class="octicon-button danger disabled tooltipped tooltipped-w" href="#"
+             aria-label="You must be signed in to make or propose changes">
           <span class="octicon octicon-trashcan"></span>
         </a>
       </div><!-- /.actions -->
     </div>
     
 
-  <div class="blob-wrapper data type-javascript">
+  <div class="blob-wrapper data type-text">
       <table class="highlight tab-size-8 js-file-line-container">
       <tr>
         <td id="L1" class="blob-num js-line-number" data-line-number="1"></td>
-        <td id="LC1" class="blob-code js-file-line"><span class="pl-c">/*!</span></td>
-      </tr>
-      <tr>
-        <td id="L2" class="blob-num js-line-number" data-line-number="2"></td>
-        <td id="LC2" class="blob-code js-file-line"><span class="pl-c"> * https://github.com/es-shims/es5-shim</span></td>
-      </tr>
-      <tr>
-        <td id="L3" class="blob-num js-line-number" data-line-number="3"></td>
-        <td id="LC3" class="blob-code js-file-line"><span class="pl-c"> * @license es5-shim Copyright 2009-2014 by contributors, MIT License</span></td>
-      </tr>
-      <tr>
-        <td id="L4" class="blob-num js-line-number" data-line-number="4"></td>
-        <td id="LC4" class="blob-code js-file-line"><span class="pl-c"> * see https://github.com/es-shims/es5-shim/blob/v4.0.5/LICENSE</span></td>
-      </tr>
-      <tr>
-        <td id="L5" class="blob-num js-line-number" data-line-number="5"></td>
-        <td id="LC5" class="blob-code js-file-line"><span class="pl-c"> */</span></td>
-      </tr>
-      <tr>
-        <td id="L6" class="blob-num js-line-number" data-line-number="6"></td>
-        <td id="LC6" class="blob-code js-file-line">(function(t,e){&quot;use strict&quot;;if(typeof define===&quot;function&quot;&amp;&amp;define.amd){define(e)}else if(typeof exports===&quot;object&quot;){module.exports=e()}else{t.returnExports=e()}})(this,function(){var t=Array.prototype;var e=Object.prototype;var r=Function.prototype;var n=String.prototype;var i=Number.prototype;var a=t.slice;var o=t.splice;var u=t.push;var l=t.unshift;var s=r.call;var f=e.toString;var c=function(t){return f.call(t)===&quot;[object Function]&quot;};var p=function(t){return f.call(t)===&quot;[object RegExp]&quot;};var h=function le(t){return f.call(t)===&quot;[object Array]&quot;};var v=function se(t){return f.call(t)===&quot;[object String]&quot;};var g=function fe(t){var e=f.call(t);var r=e===&quot;[object Arguments]&quot;;if(!r){r=!h(t)&amp;&amp;t!==null&amp;&amp;typeof t===&quot;object&quot;&amp;&amp;typeof t.length===&quot;number&quot;&amp;&amp;t.length&gt;=0&amp;&amp;c(t.callee)}return r};var y=Object.defineProperty&amp;&amp;function(){try{Object.defineProperty({},&quot;x&quot;,{});return true}catch(t){return false}}();var d;if(y){d=function(t,e,r,n){if(!n&amp;&amp;e in t){return}Object.defineProperty(t,e,{configurable:true,enumerable:false,writable:true,value:r})}}else{d=function(t,e,r,n){if(!n&amp;&amp;e in t){return}t[e]=r}}var m=function(t,r,n){for(var i in r){if(e.hasOwnProperty.call(r,i)){d(t,i,r[i],n)}}};function b(t){var e=+t;if(e!==e){e=0}else if(e!==0&amp;&amp;e!==1/0&amp;&amp;e!==-(1/0)){e=(e&gt;0||-1)*Math.floor(Math.abs(e))}return e}function w(t){var e=typeof t;return t===null||e===&quot;undefined&quot;||e===&quot;boolean&quot;||e===&quot;number&quot;||e===&quot;string&quot;}function x(t){var e,r,n;if(w(t)){return t}r=t.valueOf;if(c(r)){e=r.call(t);if(w(e)){return e}}n=t.toString;if(c(n)){e=n.call(t);if(w(e)){return e}}throw new TypeError}var O={ToObject:function(t){if(t==null){throw new TypeError(&quot;can&#39;t convert &quot;+t+&quot; to object&quot;)}return Object(t)},ToUint32:function ce(t){return t&gt;&gt;&gt;0}};var T=function pe(){};m(r,{bind:function he(t){var e=this;if(!c(e)){throw new TypeError(&quot;Function.prototype.bind called on incompatible &quot;+e)}var r=a.call(arguments,1);var n;var i=function(){if(this instanceof n){var i=e.apply(this,r.concat(a.call(arguments)));if(Object(i)===i){return i}return this}else{return e.apply(t,r.concat(a.call(arguments)))}};var o=Math.max(0,e.length-r.length);var u=[];for(var l=0;l&lt;o;l++){u.push(&quot;$&quot;+l)}n=Function(&quot;binder&quot;,&quot;return function (&quot;+u.join(&quot;,&quot;)+&quot;){ return binder.apply(this, arguments); }&quot;)(i);if(e.prototype){T.prototype=e.prototype;n.prototype=new T;T.prototype=null}return n}});var j=s.bind(e.hasOwnProperty);var S=function(){var t=[1,2];var e=t.splice();return t.length===2&amp;&amp;h(e)&amp;&amp;e.length===0}();m(t,{splice:function ve(t,e){if(arguments.length===0){return[]}else{return o.apply(this,arguments)}}},S);var E=function(){var e={};t.splice.call(e,0,0,1);return e.length===1}();m(t,{splice:function ge(t,e){if(arguments.length===0){return[]}var r=arguments;this.length=Math.max(b(this.length),0);if(arguments.length&gt;0&amp;&amp;typeof e!==&quot;number&quot;){r=a.call(arguments);if(r.length&lt;2){r.push(this.length-t)}else{r[1]=b(e)}}return o.apply(this,r)}},!E);var N=[].unshift(0)!==1;m(t,{unshift:function(){l.apply(this,arguments);return this.length}},N);m(Array,{isArray:h});var I=Object(&quot;a&quot;);var D=I[0]!==&quot;a&quot;||!(0 in I);var M=function ye(t){var e=true;var r=true;if(t){t.call(&quot;foo&quot;,function(t,r,n){if(typeof n!==&quot;object&quot;){e=false}});t.call([1],function(){&quot;use strict&quot;;r=typeof this===&quot;string&quot;},&quot;x&quot;)}return!!t&amp;&amp;e&amp;&amp;r};m(t,{forEach:function de(t){var e=O.ToObject(this),r=D&amp;&amp;v(this)?this.split(&quot;&quot;):e,n=arguments[1],i=-1,a=r.length&gt;&gt;&gt;0;if(!c(t)){throw new TypeError}while(++i&lt;a){if(i in r){t.call(n,r[i],i,e)}}}},!M(t.forEach));m(t,{map:function me(t){var e=O.ToObject(this),r=D&amp;&amp;v(this)?this.split(&quot;&quot;):e,n=r.length&gt;&gt;&gt;0,i=Array(n),a=arguments[1];if(!c(t)){throw new TypeError(t+&quot; is not a function&quot;)}for(var o=0;o&lt;n;o++){if(o in r){i[o]=t.call(a,r[o],o,e)}}return i}},!M(t.map));m(t,{filter:function be(t){var e=O.ToObject(this),r=D&amp;&amp;v(this)?this.split(&quot;&quot;):e,n=r.length&gt;&gt;&gt;0,i=[],a,o=arguments[1];if(!c(t)){throw new TypeError(t+&quot; is not a function&quot;)}for(var u=0;u&lt;n;u++){if(u in r){a=r[u];if(t.call(o,a,u,e)){i.push(a)}}}return i}},!M(t.filter));m(t,{every:function we(t){var e=O.ToObject(this),r=D&amp;&amp;v(this)?this.split(&quot;&quot;):e,n=r.length&gt;&gt;&gt;0,i=arguments[1];if(!c(t)){throw new TypeError(t+&quot; is not a function&quot;)}for(var a=0;a&lt;n;a++){if(a in r&amp;&amp;!t.call(i,r[a],a,e)){return false}}return true}},!M(t.every));m(t,{some:function xe(t){var e=O.ToObject(this),r=D&amp;&amp;v(this)?this.split(&quot;&quot;):e,n=r.length&gt;&gt;&gt;0,i=arguments[1];if(!c(t)){throw new TypeError(t+&quot; is not a function&quot;)}for(var a=0;a&lt;n;a++){if(a in r&amp;&amp;t.call(i,r[a],a,e)){return true}}return false}},!M(t.some));var F=false;if(t.reduce){F=typeof t.reduce.call(&quot;es5&quot;,function(t,e,r,n){return n})===&quot;object&quot;}m(t,{reduce:function Oe(t){var e=O.ToObject(this),r=D&amp;&amp;v(this)?this.split(&quot;&quot;):e,n=r.length&gt;&gt;&gt;0;if(!c(t)){throw new TypeError(t+&quot; is not a function&quot;)}if(!n&amp;&amp;arguments.length===1){throw new TypeError(&quot;reduce of empty array with no initial value&quot;)}var i=0;var a;if(arguments.length&gt;=2){a=arguments[1]}else{do{if(i in r){a=r[i++];break}if(++i&gt;=n){throw new TypeError(&quot;reduce of empty array with no initial value&quot;)}}while(true)}for(;i&lt;n;i++){if(i in r){a=t.call(void 0,a,r[i],i,e)}}return a}},!F);var R=false;if(t.reduceRight){R=typeof t.reduceRight.call(&quot;es5&quot;,function(t,e,r,n){return n})===&quot;object&quot;}m(t,{reduceRight:function Te(t){var e=O.ToObject(this),r=D&amp;&amp;v(this)?this.split(&quot;&quot;):e,n=r.length&gt;&gt;&gt;0;if(!c(t)){throw new TypeError(t+&quot; is not a function&quot;)}if(!n&amp;&amp;arguments.length===1){throw new TypeError(&quot;reduceRight of empty array with no initial value&quot;)}var i,a=n-1;if(arguments.length&gt;=2){i=arguments[1]}else{do{if(a in r){i=r[a--];break}if(--a&lt;0){throw new TypeError(&quot;reduceRight of empty array with no initial value&quot;)}}while(true)}if(a&lt;0){return i}do{if(a in r){i=t.call(void 0,i,r[a],a,e)}}while(a--);return i}},!R);var U=Array.prototype.indexOf&amp;&amp;[0,1].indexOf(1,2)!==-1;m(t,{indexOf:function je(t){var e=D&amp;&amp;v(this)?this.split(&quot;&quot;):O.ToObject(this),r=e.length&gt;&gt;&gt;0;if(!r){return-1}var n=0;if(arguments.length&gt;1){n=b(arguments[1])}n=n&gt;=0?n:Math.max(0,r+n);for(;n&lt;r;n++){if(n in e&amp;&amp;e[n]===t){return n}}return-1}},U);var k=Array.prototype.lastIndexOf&amp;&amp;[0,1].lastIndexOf(0,-3)!==-1;m(t,{lastIndexOf:function Se(t){var e=D&amp;&amp;v(this)?this.split(&quot;&quot;):O.ToObject(this),r=e.length&gt;&gt;&gt;0;if(!r){return-1}var n=r-1;if(arguments.length&gt;1){n=Math.min(n,b(arguments[1]))}n=n&gt;=0?n:r-Math.abs(n);for(;n&gt;=0;n--){if(n in e&amp;&amp;t===e[n]){return n}}return-1}},k);var C=!{toString:null}.propertyIsEnumerable(&quot;toString&quot;),A=function(){}.propertyIsEnumerable(&quot;prototype&quot;),P=[&quot;toString&quot;,&quot;toLocaleString&quot;,&quot;valueOf&quot;,&quot;hasOwnProperty&quot;,&quot;isPrototypeOf&quot;,&quot;propertyIsEnumerable&quot;,&quot;constructor&quot;],Z=P.length;m(Object,{keys:function Ee(t){var e=c(t),r=g(t),n=t!==null&amp;&amp;typeof t===&quot;object&quot;,i=n&amp;&amp;v(t);if(!n&amp;&amp;!e&amp;&amp;!r){throw new TypeError(&quot;Object.keys called on a non-object&quot;)}var a=[];var o=A&amp;&amp;e;if(i||r){for(var u=0;u&lt;t.length;++u){a.push(String(u))}}else{for(var l in t){if(!(o&amp;&amp;l===&quot;prototype&quot;)&amp;&amp;j(t,l)){a.push(String(l))}}}if(C){var s=t.constructor,f=s&amp;&amp;s.prototype===t;for(var p=0;p&lt;Z;p++){var h=P[p];if(!(f&amp;&amp;h===&quot;constructor&quot;)&amp;&amp;j(t,h)){a.push(h)}}}return a}});var J=Object.keys&amp;&amp;function(){return Object.keys(arguments).length===2}(1,2);var z=Object.keys;m(Object,{keys:function Ne(e){if(g(e)){return z(t.slice.call(e))}else{return z(e)}}},!J);var $=-621987552e5;var B=&quot;-000001&quot;;var H=Date.prototype.toISOString&amp;&amp;new Date($).toISOString().indexOf(B)===-1;m(Date.prototype,{toISOString:function Ie(){var t,e,r,n,i;if(!isFinite(this)){throw new RangeError(&quot;Date.prototype.toISOString called on non-finite value.&quot;)}n=this.getUTCFullYear();i=this.getUTCMonth();n+=Math.floor(i/12);i=(i%12+12)%12;t=[i+1,this.getUTCDate(),this.getUTCHours(),this.getUTCMinutes(),this.getUTCSeconds()];n=(n&lt;0?&quot;-&quot;:n&gt;9999?&quot;+&quot;:&quot;&quot;)+(&quot;00000&quot;+Math.abs(n)).slice(0&lt;=n&amp;&amp;n&lt;=9999?-4:-6);e=t.length;while(e--){r=t[e];if(r&lt;10){t[e]=&quot;0&quot;+r}}return n+&quot;-&quot;+t.slice(0,2).join(&quot;-&quot;)+&quot;T&quot;+t.slice(2).join(&quot;:&quot;)+&quot;.&quot;+(&quot;000&quot;+this.getUTCMilliseconds()).slice(-3)+&quot;Z&quot;}},H);var L=false;try{L=Date.prototype.toJSON&amp;&amp;new Date(NaN).toJSON()===null&amp;&amp;new Date($).toJSON().indexOf(B)!==-1&amp;&amp;Date.prototype.toJSON.call({toISOString:function(){return true}})}catch(X){}if(!L){Date.prototype.toJSON=function De(t){var e=Object(this),r=x(e),n;if(typeof r===&quot;number&quot;&amp;&amp;!isFinite(r)){return null}n=e.toISOString;if(typeof n!==&quot;function&quot;){throw new TypeError(&quot;toISOString property is not callable&quot;)}return n.call(e)}}var Y=Date.parse(&quot;+033658-09-27T01:46:40.000Z&quot;)===1e15;var q=!isNaN(Date.parse(&quot;2012-04-04T24:00:00.500Z&quot;))||!isNaN(Date.parse(&quot;2012-11-31T23:59:59.000Z&quot;));var G=isNaN(Date.parse(&quot;2000-01-01T00:00:00.000Z&quot;));if(!Date.parse||G||q||!Y){Date=function(t){function e(r,n,i,a,o,u,l){var s=arguments.length;if(this instanceof t){var f=s===1&amp;&amp;String(r)===r?new t(e.parse(r)):s&gt;=7?new t(r,n,i,a,o,u,l):s&gt;=6?new t(r,n,i,a,o,u):s&gt;=5?new t(r,n,i,a,o):s&gt;=4?new t(r,n,i,a):s&gt;=3?new t(r,n,i):s&gt;=2?new t(r,n):s&gt;=1?new t(r):new t;f.constructor=e;return f}return t.apply(this,arguments)}var r=new RegExp(&quot;^&quot;+&quot;(\\d{4}|[+-]\\d{6})&quot;+&quot;(?:-(\\d{2})&quot;+&quot;(?:-(\\d{2})&quot;+&quot;(?:&quot;+&quot;T(\\d{2})&quot;+&quot;:(\\d{2})&quot;+&quot;(?:&quot;+&quot;:(\\d{2})&quot;+&quot;(?:(\\.\\d{1,}))?&quot;+&quot;)?&quot;+&quot;(&quot;+&quot;Z|&quot;+&quot;(?:&quot;+&quot;([-+])&quot;+&quot;(\\d{2})&quot;+&quot;:(\\d{2})&quot;+&quot;)&quot;+&quot;)?)?)?)?&quot;+&quot;$&quot;);var n=[0,31,59,90,120,151,181,212,243,273,304,334,365];function i(t,e){var r=e&gt;1?1:0;return n[e]+Math.floor((t-1969+r)/4)-Math.floor((t-1901+r)/100)+Math.floor((t-1601+r)/400)+365*(t-1970)}function a(e){return Number(new t(1970,0,1,0,0,0,e))}for(var o in t){e[o]=t[o]}e.now=t.now;e.UTC=t.UTC;e.prototype=t.prototype;e.prototype.constructor=e;e.parse=function u(e){var n=r.exec(e);if(n){var o=Number(n[1]),u=Number(n[2]||1)-1,l=Number(n[3]||1)-1,s=Number(n[4]||0),f=Number(n[5]||0),c=Number(n[6]||0),p=Math.floor(Number(n[7]||0)*1e3),h=Boolean(n[4]&amp;&amp;!n[8]),v=n[9]===&quot;-&quot;?1:-1,g=Number(n[10]||0),y=Number(n[11]||0),d;if(s&lt;(f&gt;0||c&gt;0||p&gt;0?24:25)&amp;&amp;f&lt;60&amp;&amp;c&lt;60&amp;&amp;p&lt;1e3&amp;&amp;u&gt;-1&amp;&amp;u&lt;12&amp;&amp;g&lt;24&amp;&amp;y&lt;60&amp;&amp;l&gt;-1&amp;&amp;l&lt;i(o,u+1)-i(o,u)){d=((i(o,u)+l)*24+s+g*v)*60;d=((d+f+y*v)*60+c)*1e3+p;if(h){d=a(d)}if(-864e13&lt;=d&amp;&amp;d&lt;=864e13){return d}}return NaN}return t.parse.apply(this,arguments)};return e}(Date)}if(!Date.now){Date.now=function Me(){return(new Date).getTime()}}var K=i.toFixed&amp;&amp;(8e-5.toFixed(3)!==&quot;0.000&quot;||.9.toFixed(0)!==&quot;1&quot;||1.255.toFixed(2)!==&quot;1.25&quot;||0xde0b6b3a7640080.toFixed(0)!==&quot;1000000000000000128&quot;);var Q={base:1e7,size:6,data:[0,0,0,0,0,0],multiply:function Fe(t,e){var r=-1;while(++r&lt;Q.size){e+=t*Q.data[r];Q.data[r]=e%Q.base;e=Math.floor(e/Q.base)}},divide:function Re(t){var e=Q.size,r=0;while(--e&gt;=0){r+=Q.data[e];Q.data[e]=Math.floor(r/t);r=r%t*Q.base}},numToString:function Ue(){var t=Q.size;var e=&quot;&quot;;while(--t&gt;=0){if(e!==&quot;&quot;||t===0||Q.data[t]!==0){var r=String(Q.data[t]);if(e===&quot;&quot;){e=r}else{e+=&quot;0000000&quot;.slice(0,7-r.length)+r}}}return e},pow:function ke(t,e,r){return e===0?r:e%2===1?ke(t,e-1,r*t):ke(t*t,e/2,r)},log:function Ce(t){var e=0;while(t&gt;=4096){e+=12;t/=4096}while(t&gt;=2){e+=1;t/=2}return e}};m(i,{toFixed:function Ae(t){var e,r,n,i,a,o,u,l;e=Number(t);e=e!==e?0:Math.floor(e);if(e&lt;0||e&gt;20){throw new RangeError(&quot;Number.toFixed called with invalid number of decimals&quot;)}r=Number(this);if(r!==r){return&quot;NaN&quot;}if(r&lt;=-1e21||r&gt;=1e21){return String(r)}n=&quot;&quot;;if(r&lt;0){n=&quot;-&quot;;r=-r}i=&quot;0&quot;;if(r&gt;1e-21){a=Q.log(r*Q.pow(2,69,1))-69;o=a&lt;0?r*Q.pow(2,-a,1):r/Q.pow(2,a,1);o*=4503599627370496;a=52-a;if(a&gt;0){Q.multiply(0,o);u=e;while(u&gt;=7){Q.multiply(1e7,0);u-=7}Q.multiply(Q.pow(10,u,1),0);u=a-1;while(u&gt;=23){Q.divide(1&lt;&lt;23);u-=23}Q.divide(1&lt;&lt;u);Q.multiply(1,1);Q.divide(2);i=Q.numToString()}else{Q.multiply(0,o);Q.multiply(1&lt;&lt;-a,0);i=Q.numToString()+&quot;0.00000000000000000000&quot;.slice(2,2+e)}}if(e&gt;0){l=i.length;if(l&lt;=e){i=n+&quot;0.0000000000000000000&quot;.slice(0,e-l+2)+i}else{i=n+i.slice(0,l-e)+&quot;.&quot;+i.slice(l-e)}}else{i=n+i}return i}},K);var V=n.split;if(&quot;ab&quot;.split(/(?:ab)*/).length!==2||&quot;.&quot;.split(/(.?)(.?)/).length!==4||&quot;tesst&quot;.split(/(s)*/)[1]===&quot;t&quot;||&quot;test&quot;.split(/(?:)/,-1).length!==4||&quot;&quot;.split(/.?/).length||&quot;.&quot;.split(/()()/).length&gt;1){(function(){var t=typeof/()??/.exec(&quot;&quot;)[1]===&quot;undefined&quot;;n.split=function(e,r){var n=this;if(typeof e===&quot;undefined&quot;&amp;&amp;r===0){return[]}if(f.call(e)!==&quot;[object RegExp]&quot;){return V.call(this,e,r)}var i=[],a=(e.ignoreCase?&quot;i&quot;:&quot;&quot;)+(e.multiline?&quot;m&quot;:&quot;&quot;)+(e.extended?&quot;x&quot;:&quot;&quot;)+(e.sticky?&quot;y&quot;:&quot;&quot;),o=0,l,s,c,p;e=new RegExp(e.source,a+&quot;g&quot;);n+=&quot;&quot;;if(!t){l=new RegExp(&quot;^&quot;+e.source+&quot;$(?!\\s)&quot;,a)}r=typeof r===&quot;undefined&quot;?-1&gt;&gt;&gt;0:O.ToUint32(r);while(s=e.exec(n)){c=s.index+s[0].length;if(c&gt;o){i.push(n.slice(o,s.index));if(!t&amp;&amp;s.length&gt;1){s[0].replace(l,function(){for(var t=1;t&lt;arguments.length-2;t++){if(typeof arguments[t]===&quot;undefined&quot;){s[t]=void 0}}})}if(s.length&gt;1&amp;&amp;s.index&lt;n.length){u.apply(i,s.slice(1))}p=s[0].length;o=c;if(i.length&gt;=r){break}}if(e.lastIndex===s.index){e.lastIndex++}}if(o===n.length){if(p||!e.test(&quot;&quot;)){i.push(&quot;&quot;)}}else{i.push(n.slice(o))}return i.length&gt;r?i.slice(0,r):i}})()}else if(&quot;0&quot;.split(void 0,0).length){n.split=function Pe(t,e){if(typeof t===&quot;undefined&quot;&amp;&amp;e===0){return[]}return V.call(this,t,e)}}var W=n.replace;var _=function(){var t=[];&quot;x&quot;.replace(/x(.)?/g,function(e,r){t.push(r)});return t.length===1&amp;&amp;typeof t[0]===&quot;undefined&quot;}();if(!_){n.replace=function Ze(t,e){var r=c(e);var n=p(t)&amp;&amp;/\)[*?]/.test(t.source);if(!r||!n){return W.call(this,t,e)}else{var i=function(r){var n=arguments.length;var i=t.lastIndex;t.lastIndex=0;var a=t.exec(r)||[];t.lastIndex=i;a.push(arguments[n-2],arguments[n-1]);return e.apply(this,a)};return W.call(this,t,i)}}}var te=n.substr;var ee=&quot;&quot;.substr&amp;&amp;&quot;0b&quot;.substr(-1)!==&quot;b&quot;;m(n,{substr:function Je(t,e){return te.call(this,t&lt;0?(t=this.length+t)&lt;0?0:t:t,e)}},ee);var re=&quot;	\n\f\r \xa0\u1680\u180e\u2000\u2001\u2002\u2003&quot;+&quot;\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028&quot;+&quot;\u2029\ufeff&quot;;var ne=&quot;\u200b&quot;;var ie=&quot;[&quot;+re+&quot;]&quot;;var ae=new RegExp(&quot;^&quot;+ie+ie+&quot;*&quot;);var oe=new RegExp(ie+ie+&quot;*$&quot;);var ue=n.trim&amp;&amp;(re.trim()||!ne.trim());m(n,{trim:function ze(){if(typeof this===&quot;undefined&quot;||this===null){throw new TypeError(&quot;can&#39;t convert &quot;+this+&quot; to object&quot;)}return String(this).replace(ae,&quot;&quot;).replace(oe,&quot;&quot;)}},ue);if(parseInt(re+&quot;08&quot;)!==8||parseInt(re+&quot;0x16&quot;)!==22){parseInt=function(t){var e=/^0[xX]/;return function r(n,i){n=String(n).trim();if(!Number(i)){i=e.test(n)?16:10}return t(n,i)}}(parseInt)}});</td>
-      </tr>
-      <tr>
-        <td id="L7" class="blob-num js-line-number" data-line-number="7"></td>
-        <td id="LC7" class="blob-code js-file-line"><span class="pl-c">"/*# sourceMappingURL=es5-shim.map"</span></td>
+        <td id="LC1" class="blob-code js-file-line">{&quot;version&quot;:3,&quot;sources&quot;:[&quot;es5-shim.js&quot;],&quot;names&quot;:[&quot;root&quot;,&quot;factory&quot;,&quot;define&quot;,&quot;amd&quot;,&quot;exports&quot;,&quot;module&quot;,&quot;returnExports&quot;,&quot;this&quot;,&quot;ArrayPrototype&quot;,&quot;Array&quot;,&quot;prototype&quot;,&quot;ObjectPrototype&quot;,&quot;Object&quot;,&quot;FunctionPrototype&quot;,&quot;Function&quot;,&quot;StringPrototype&quot;,&quot;String&quot;,&quot;NumberPrototype&quot;,&quot;Number&quot;,&quot;array_slice&quot;,&quot;slice&quot;,&quot;array_splice&quot;,&quot;splice&quot;,&quot;array_push&quot;,&quot;push&quot;,&quot;array_unshift&quot;,&quot;unshift&quot;,&quot;call&quot;,&quot;to_string&quot;,&quot;toString&quot;,&quot;isFunction&quot;,&quot;val&quot;,&quot;isRegex&quot;,&quot;isArray&quot;,&quot;obj&quot;,&quot;isString&quot;,&quot;isArguments&quot;,&quot;value&quot;,&quot;str&quot;,&quot;isArgs&quot;,&quot;length&quot;,&quot;callee&quot;,&quot;supportsDescriptors&quot;,&quot;defineProperty&quot;,&quot;e&quot;,&quot;object&quot;,&quot;name&quot;,&quot;method&quot;,&quot;forceAssign&quot;,&quot;configurable&quot;,&quot;enumerable&quot;,&quot;writable&quot;,&quot;defineProperties&quot;,&quot;map&quot;,&quot;hasOwnProperty&quot;,&quot;toInteger&quot;,&quot;num&quot;,&quot;n&quot;,&quot;Math&quot;,&quot;floor&quot;,&quot;abs&quot;,&quot;isPrimitive&quot;,&quot;input&quot;,&quot;type&quot;,&quot;toPrimitive&quot;,&quot;valueOf&quot;,&quot;toStr&quot;,&quot;TypeError&quot;,&quot;ES&quot;,&quot;ToObject&quot;,&quot;o&quot;,&quot;ToUint32&quot;,&quot;x&quot;,&quot;Empty&quot;,&quot;bind&quot;,&quot;that&quot;,&quot;target&quot;,&quot;args&quot;,&quot;arguments&quot;,&quot;bound&quot;,&quot;binder&quot;,&quot;result&quot;,&quot;apply&quot;,&quot;concat&quot;,&quot;boundLength&quot;,&quot;max&quot;,&quot;boundArgs&quot;,&quot;i&quot;,&quot;join&quot;,&quot;owns&quot;,&quot;spliceNoopReturnsEmptyArray&quot;,&quot;a&quot;,&quot;start&quot;,&quot;deleteCount&quot;,&quot;spliceWorksWithEmptyObject&quot;,&quot;hasUnshiftReturnValueBug&quot;,&quot;boxedString&quot;,&quot;splitString&quot;,&quot;properlyBoxesContext&quot;,&quot;properlyBoxed&quot;,&quot;properlyBoxesNonStrict&quot;,&quot;properlyBoxesStrict&quot;,&quot;_&quot;,&quot;__&quot;,&quot;context&quot;,&quot;forEach&quot;,&quot;fun&quot;,&quot;self&quot;,&quot;split&quot;,&quot;thisp&quot;,&quot;filter&quot;,&quot;every&quot;,&quot;some&quot;,&quot;reduceCoercesToObject&quot;,&quot;reduce&quot;,&quot;___&quot;,&quot;list&quot;,&quot;reduceRightCoercesToObject&quot;,&quot;reduceRight&quot;,&quot;hasFirefox2IndexOfBug&quot;,&quot;indexOf&quot;,&quot;sought&quot;,&quot;hasFirefox2LastIndexOfBug&quot;,&quot;lastIndexOf&quot;,&quot;min&quot;,&quot;hasDontEnumBug&quot;,&quot;propertyIsEnumerable&quot;,&quot;hasProtoEnumBug&quot;,&quot;dontEnums&quot;,&quot;dontEnumsLength&quot;,&quot;keys&quot;,&quot;isFn&quot;,&quot;isObject&quot;,&quot;isStr&quot;,&quot;theKeys&quot;,&quot;skipProto&quot;,&quot;ctor&quot;,&quot;constructor&quot;,&quot;skipConstructor&quot;,&quot;j&quot;,&quot;dontEnum&quot;,&quot;keysWorksWithArguments&quot;,&quot;originalKeys&quot;,&quot;negativeDate&quot;,&quot;negativeYearString&quot;,&quot;hasNegativeDateBug&quot;,&quot;Date&quot;,&quot;toISOString&quot;,&quot;year&quot;,&quot;month&quot;,&quot;isFinite&quot;,&quot;RangeError&quot;,&quot;getUTCFullYear&quot;,&quot;getUTCMonth&quot;,&quot;getUTCDate&quot;,&quot;getUTCHours&quot;,&quot;getUTCMinutes&quot;,&quot;getUTCSeconds&quot;,&quot;getUTCMilliseconds&quot;,&quot;dateToJSONIsSupported&quot;,&quot;toJSON&quot;,&quot;NaN&quot;,&quot;key&quot;,&quot;tv&quot;,&quot;toISO&quot;,&quot;supportsExtendedYears&quot;,&quot;parse&quot;,&quot;acceptsInvalidDates&quot;,&quot;isNaN&quot;,&quot;doesNotParseY2KNewYear&quot;,&quot;NativeDate&quot;,&quot;Y&quot;,&quot;M&quot;,&quot;D&quot;,&quot;h&quot;,&quot;m&quot;,&quot;s&quot;,&quot;ms&quot;,&quot;date&quot;,&quot;isoDateExpression&quot;,&quot;RegExp&quot;,&quot;months&quot;,&quot;dayFromMonth&quot;,&quot;t&quot;,&quot;toUTC&quot;,&quot;now&quot;,&quot;UTC&quot;,&quot;string&quot;,&quot;match&quot;,&quot;exec&quot;,&quot;day&quot;,&quot;hour&quot;,&quot;minute&quot;,&quot;second&quot;,&quot;millisecond&quot;,&quot;isLocalTime&quot;,&quot;Boolean&quot;,&quot;signOffset&quot;,&quot;hourOffset&quot;,&quot;minuteOffset&quot;,&quot;getTime&quot;,&quot;hasToFixedBugs&quot;,&quot;toFixed&quot;,&quot;toFixedHelpers&quot;,&quot;base&quot;,&quot;size&quot;,&quot;data&quot;,&quot;multiply&quot;,&quot;c&quot;,&quot;divide&quot;,&quot;numToString&quot;,&quot;pow&quot;,&quot;acc&quot;,&quot;log&quot;,&quot;fractionDigits&quot;,&quot;f&quot;,&quot;z&quot;,&quot;k&quot;,&quot;string_split&quot;,&quot;compliantExecNpcg&quot;,&quot;separator&quot;,&quot;limit&quot;,&quot;output&quot;,&quot;flags&quot;,&quot;ignoreCase&quot;,&quot;multiline&quot;,&quot;extended&quot;,&quot;sticky&quot;,&quot;lastLastIndex&quot;,&quot;separator2&quot;,&quot;lastIndex&quot;,&quot;lastLength&quot;,&quot;source&quot;,&quot;index&quot;,&quot;replace&quot;,&quot;test&quot;,&quot;str_replace&quot;,&quot;replaceReportsGroupsCorrectly&quot;,&quot;groups&quot;,&quot;group&quot;,&quot;searchValue&quot;,&quot;replaceValue&quot;,&quot;hasCapturingGroups&quot;,&quot;wrappedReplaceValue&quot;,&quot;originalLastIndex&quot;,&quot;string_substr&quot;,&quot;substr&quot;,&quot;hasNegativeSubstrBug&quot;,&quot;ws&quot;,&quot;zeroWidth&quot;,&quot;wsRegexChars&quot;,&quot;trimBeginRegexp&quot;,&quot;trimEndRegexp&quot;,&quot;hasTrimWhitespaceBug&quot;,&quot;trim&quot;,&quot;parseInt&quot;,&quot;origParseInt&quot;,&quot;hexRegex&quot;,&quot;parseIntES5&quot;,&quot;radix&quot;],&quot;mappings&quot;:&quot;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&quot;}</td>
       </tr>
 </table>
 
@@ -1119,7 +921,7 @@
     </a>
 
     <ul class="site-footer-links">
-      <li>&copy; 2015 <span title="0.05637s from github-fe140-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+      <li>&copy; 2015 <span title="0.02872s from github-fe135-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
         <li><a href="/site/terms">Terms</a></li>
         <li><a href="/site/privacy">Privacy</a></li>
         <li><a href="/security">Security</a></li>
@@ -1158,8 +960,8 @@
     </div>
 
 
-      <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/frameworks-a53cc1d2ecae95baef19b4168bf69815523b6eea183f7af29fa0d120fda72d36.js" type="text/javascript"></script>
-      <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github-55f9bbdaa2b4821658fab711fd8b995f7b176d8ac988f085ee10dbab30ccdc06.js" type="text/javascript"></script>
+      <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/frameworks-2a688ea200a50a474783d34f1f46405acbc687c4d17db98b4b2b769b44174d5d.js" type="text/javascript"></script>
+      <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github-5ef71947c9c16f5cc5fb53c5c07bc3e2499a2c1324b2f7806cc977b38e0e11ad.js" type="text/javascript"></script>
       
       
   </body>

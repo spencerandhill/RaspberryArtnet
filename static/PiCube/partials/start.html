@@ -2,6 +2,7 @@
 <div class="container" id="management">
     <div class="jumbotron">
         <h3>Start</h3>
+        <hr>
 
         <!-- AngularJS -->
         <br/>
@@ -20,7 +21,7 @@
         </p>
 
         <div ng-controller="FileCtrl">
-            <div ng-hide="files.length" class="alert alert-warning">Noch keine Files vorhanden!</div>
+            <div ng-hide="files.length" class="alert alert-warning">Keine Files vorhanden!</div>
             <table ng-show="files.length" class="table">
                 <tr>
                     <th>Name</th>
@@ -33,7 +34,7 @@
                     <td>{{file.name}}</td>
                     <td>{{file.path}}</td>
                     <td>{{file.sizeinMB}} MB</td>
-                    <td><a href class="btn btn-success btn-xs" ng-click="fileFactory.playFile(file.path);"><span class="glyphicon glyphicon-play"></span> Abspielen</a></td>
+                    <td><a href class="btn btn-success btn-xs" ng-click="fileFactory.playFile(file.path, file.id);"><span class="glyphicon glyphicon-play"></span> Abspielen</a></td>
                     <td><a href class="btn btn-danger btn-xs" ng-click="fileFactory.removeFile(file.id);"><span class="glyphicon glyphicon-trash"></span> Entfernen</a> </td>
                 </tr>
             </table>
