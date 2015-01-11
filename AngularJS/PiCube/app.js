@@ -21,7 +21,7 @@ angular.module('picube', [])     //Name des Moduls
                 console.log("Post ausgelöst");
             },
 
-            playFile: function(filepath){
+            selectFile: function(filepath){
 
                 console.log("Play ausgelöst");
                 console.log(filepath);

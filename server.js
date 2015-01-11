@@ -4,16 +4,28 @@
     var multer = require('multer');             // used for File-Upload
     var morgan = require('morgan');             // log requests to the console (express4)
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
-    var walk    = require('walk');              // Used to walk recursive through folders
+    var walk = require('walk');              // Used to walk recursive through folders
     var fs = require('fs');                     // Used for filesystem-access
     var uuid = require('node-uuid');            // used to generate uuid's to identify files
+    var Reader = require('./readpcap.js');      // used to read a pcap-file and get the buffer back
+    var Sender = require('./sender.js');        // used to send packages through network
 
     var uploadFolder = 'static/uploads';        //Define Upload-Folder for all Actions with Files
-    var files   = [];                           //Stores file-items
+
+    var files   = [];                           //Stores file-items on disk
     var openConnections = [];                   //Stores the opened Connections to clients (for push-notifications)
+    var packagesLength = 0;                     // size of packages in pcap-file
+    var selectedFileID = "";
+    var selectedFilePath = "";
+
+    var DEFAULTSTATUS = "Bereit, wenn du's bist ;)";
+    var serverMsg = {};                         //Stores PushMessage for Client
+    var serverStatus = DEFAULTSTATUS;
+    var serverError = "";
+    var UPDATE = false;
+
 
 // configuration ======================================================================
-
     server.use(morgan('dev'));                                         // log every request to the console
     server.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
     server.use(bodyParser.json());                                     // parse application/json
@@ -25,7 +37,12 @@
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS');
         res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
- 
+
+        // Disable caching for content files
+        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.header("Pragma", "no-cache");
+        res.header("Expires", 0);
+
         // intercept OPTIONS method
         if ('OPTIONS' == req.method) {
           res.status(200).end();
@@ -45,25 +62,61 @@
     }));
 
 // Functions ======================================================================
+//Interval-Functions
+    //sends periodically push-notifications, if UPDATE is set to true
+    setInterval(function() {
+        if(UPDATE) {
+            sendPushNotification();
+        }
+    }, 100);  //Every 100 Milliseconds
 
-    var checkConnections = function() {
+//Other Functions
+//send Notification to all connected Clients
+    var sendPushNotification = function() {
+        serverMsg.status = serverStatus;
+        serverMsg.error = serverError;
+        serverMsg.update = UPDATE;
+
         //walk through each connection
-        openConnections.forEach(function(resp) {
-            resp.write('data: ' + createMsg() + '\n\n');    //Response with Message
-        })
+        if (serverMsg) {
+            openConnections.forEach(function (resp) {
+                resp.write('data: ' + JSON.stringify(serverMsg) + '\n\n');    //Response with Message
+            })
+        }
+
+        UPDATE = false;
     }
 
-    //sends periodically push-notifications
-    setInterval(function() {
-        checkConnections();
-    }, 10);  //Every 10 Milliseconds
+//Read and send pcap-file
+    var readAndSend = function(datapath, callback) {
+        Reader.read(datapath, function(content) {
+            packagesLength = content.length;
+            serverStatus = packagesLength + " Packages read";
+            sendPushNotification();
+            var sender = new Sender(content, 'localhost', 6454);
 
-    //Create Push-Notification-Message
-    function createMsg() {
-        var msg = {};
+    // Event-Listener
+            sender.on('openStarted', function() {
+                serverStatus = "File opened";
+                sendPushNotification();
+            })
 
-        msg.status = "Ready";
-        return JSON.stringify(msg);
+            sender.on('packageSend', function(packagenumber) {
+                serverStatus = "Sending Package: " + packagenumber;
+                sendPushNotification();
+            })
+
+            sender.on('end', function(length) {
+                serverStatus = length + " Packages sent";
+                sendPushNotification();
+                callback(length);
+            })
+
+            sender.on('error', function(err) {
+                serverError = err;
+                sendPushNotification();
+            })
+        })
     }
 
     //checks, if every file in files[] is still available on the server
@@ -95,10 +148,13 @@
 
     //gets the filepath related to a id from files[]
     var getFilePath = function(fileid, callback) {
-        var output = files.filter(function(item){
-            return item.id==fileid});
-
-        callback(output[0].path);       //output should contain just one item, with the right id
+        var output = files.filter(function (item) {
+            return item.id == fileid
+        });
+        if(output[0])
+            callback(output[0].path);       //output should contain just one item, with the right id
+        else
+            callback("error");
     }
 
     //checks the complete content of uploadFolder
@@ -154,9 +210,8 @@
     }
 
 // routes ======================================================================
-
     // api ---------------------------------------------------------------------
-    //check Push-Notification
+    //register Client for Push-Notification
     server.get('/api/stats', function(req, res) {
 
         //set Timeout as high as possible
@@ -168,8 +223,7 @@
             'Cache-Control': 'no-cache',
             'Connection': 'keep-alive'
         });
-
-        res.write('\n');
+        res.write('\n');        //this is important!
 
         //push this res object to global Connections
         openConnections.push(res);
@@ -185,7 +239,6 @@
                 }
             }
             openConnections.splice(i, 1);
-            console.log(openConnections.length);
         });
     });
 
@@ -198,9 +251,9 @@
 
     // delete a file
     server.delete('/api/files/:file_id', function(req, res, next) {
-
         getFilePath(req.params.file_id, function(filepath) {
             removeFile(filepath);
+            UPDATE = true;      //Send UPDATE-Notification to Clients
             getFolderContent(function(files) {
                 res.json(files);
             })
@@ -213,7 +266,7 @@
         {                                                       //valid pcap-file
             var name = req.files.file.originalname;
             name = name.split('.')[name.split('.').length - 2]; //cuts the extension '.pcap'
-
+            UPDATE = true;
             res.send({pcap: true, name: name, file: req.files.file.originalname, _id:5});
         }
         else
@@ -226,12 +279,78 @@
         }
     });
 
+    //select a file
+    server.get('/api/select/:file_id', function(req, res, next) {
+        console.log("selected");
+        getFilePath(req.params.file_id, function(filepath) {
+            if(filepath != "error") {
+                selectedFileID = req.params.file_id;
+                selectedFilePath = filepath;
+                UPDATE = true;
+                res.send({selectedFileID: selectedFileID, selectedFilePath: selectedFilePath});
+            }
+            else {
+                serverStatus = "FileIO-Error! Please refresh site!";
+                sendPushNotification();                             //send this to all clients, but don't trigger them to update
+                res.send({selectedFileID: selectedFileID, selectedFilePath: selectedFilePath});
+            }
+            console.log("getFilePath completed");
+        })
+    });
+
+    //get selected Filepath and ID
+    server.get('/api/getselected', function(req, res, next) {
+       res.send({selectedFileID: selectedFileID, selectedFilePath: selectedFilePath});
+    });
+
+    //deselect a file
+    server.delete('/api/select', function(req, res, next) {
+        selectedFileID = "";
+        selectedFilePath = "";
+        UPDATE = true;
+        res.send();
+    });
+
+    // play a file
     server.get('/api/play/:file_id', function(req, res, next) {
-       getFilePath(req.params.file_id, function(filepath) {
-           console.log("This file will be played: " + filepath);
+        console.log("play: " + selectedFileID);
+        getFilePath(req.params.file_id, function(filepath) {
+           if(filepath != "error") {
+               selectedFileID = req.params.file_id;
+               selectedFilePath = filepath;
+               serverStatus = "Reading file";
+               sendPushNotification();
+               readAndSend(filepath, function (result) {        //Push Notifications will be send inside readAndSend
+                       res.send();
+                   setTimeout(function() {
+                       serverStatus = DEFAULTSTATUS;
+                       sendPushNotification();
+                   },20000);
+               });
+           }
+           else {
+               serverStatus = "FileIO-Error! Please refresh site!";
+               sendPushNotification();
+            res.send();
+           }
        })
     });
+
+    //getServerStatus manually
+    server.get('/api/status', function(req, res, next) {
+        serverMsg.status = serverStatus;
+        serverMsg.error = serverError;
+        serverMsg.update = UPDATE;
+
+            res.send(JSON.stringify(serverMsg));    //Response with Message
+    });
+
+//Init Folder-Content
+getFolderContent(function(content) {
+    files = content;
+})
 
 // listen (start server with node server.js) ======================================
     server.listen(8080);
     console.log("server listening on port 8080");
+

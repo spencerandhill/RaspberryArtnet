@@ -15,7 +15,6 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
                 templateUrl: "../partials/player.html",
                 controller: "FilePlayCtrl"
             })
-
             .when('/',
             {
                 templateUrl: "../partials/start.html",
@@ -39,58 +38,128 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
                 return files;
             },
 
-            playFile: function(filepath, fileid){
+           //just for updating files, when push notification comes in with data
+           updateFiles: function(serverMessage){
+               //selectedFilePath = serverMessage.filepath;
+               //selectedFileID = serverMessage.fileid;
+               angular.copy(serverMessage.files, files);
+           },
+
+            selectFile: function(filepath, fileid){
+                console.log(filepath);
+                console.log(fileid);
                 selectedFilePath = filepath;
                 selectedFileID = fileid;
-                $location.path("/player");  //redirect to player
+                $http.get("http://localhost:8080/api/select/" + selectedFileID).then(function(Response){
+                    selectedFileID = Response.data.selectedFileID;
+                    selectedFilePath = Response.data.selectedFilePath;
+                    console.log("respond received");
+                    $location.path("/player");  //redirect to player
+                })
             },
 
            removeFile: function(fileid){ //deletes a file from server
             $http.delete("http://localhost:8080/api/files/" + fileid).then(function(Response){
                 angular.copy(Response.data, files);  //Update Data
-            })},
-
-           removeSelectedFilePath: function() {
-               selectedFilePath = "";
-               selectedFileID = "";
-               return selectedFilePath;
+            })
            },
 
-            getSelectedFilePath: function() {
-              return selectedFilePath;
+           removeSelectedFilePath: function() {
+               $http.delete("http://localhost:8080/api/select").then(function (Response) {
+
+                   selectedFilePath = "";
+                   selectedFileID = "";
+               })
+           },
+
+            getSelectedFile: function(callback) {
+                $http.get("http://localhost:8080/api/getselected").then(function(Response) {
+                    selectedFileID = Response.data.selectedFileID;
+                    selectedFilePath = Response.data.selectedFilePath;
+                    callback(Response.data);
+                })
             },
 
-           playSelectedFilePath: function() {
+           getServerStatus: function(callback) {
+             $http.get("http://localhost:8080/api/status").then(function(Response) {
+                 callback(Response.data);
+             })
+           },
+
+           playFile: function() {
+               console.log("play: " + selectedFileID);
                $http.get("http://localhost:8080/api/play/" + selectedFileID).then(function(Response){}) //ack will come through notification
            }
         };
     })
 
     .controller('FilePlayCtrl', function($scope, fileFactory) {
-        $scope.selectedFilePath = fileFactory.getSelectedFilePath();
         $scope.msg = {};
+        fileFactory.getSelectedFile(function (Response) {
+            if(Response.selectedFileID) {
+                $scope.selectedFilePath = Response.selectedFilePath;
+                $scope.selectedFileID = Response.selectedFileID;
+            }
+        });   //get selected Filepath and ID from serve
+
+        fileFactory.getServerStatus(function(response) {
+            $scope.msg.status = response.status;
+            $scope.msg.error = response.error;
+        })
 
         $scope.removeSelectedFilePath = function() {    //this should be called from angular
-            $scope.selectedFilePath = fileFactory.removeSelectedFilePath(); //removes the selectedFilePath and updates it
+            fileFactory.removeSelectedFilePath();
         }
 
-        $scope.playSelectedFilePath = function() {
-            fileFactory.playSelectedFilePath();
+        $scope.playFile = function() {
+            fileFactory.playFile();
         }
-                //is called, when Push-Notification is received
-                var handleCallback = function(msg) {
-                    $scope.$apply(function() {
-                        $scope.msg = JSON.parse(msg.data);
-                    })
-                }
 
-                var source = new EventSource('/api/stats');
-                source.addEventListener('message', handleCallback, false);      //This registers the EventHandler for Push-Notifications
+        //is called, when Push-Notification is received
+        var receivePushNotification = function(msg) {
+            console.log("update coming");
+            if(msg) {
+                $scope.$apply(function () {
+                    if(JSON.parse(msg.data).update) {       //check if update is necessary
+                        $scope.files = fileFactory.getFiles();
+                        var Response = fileFactory.getSelectedFile();   //get selected Filepath and ID from serve
+                        $scope.selectedFilePath = Response.selectedFilePath;
+                        $scope.selectedFileID = Response.selectedFileID;
+                    }
+                    $scope.msg.status = JSON.parse(msg.data).status;    //Update the status of Server anyway
+                    $scope.msg.error = JSON.parse(msg.data).error;      //Update error status of Server anyway
+                })
+            }
+        }
+
+        var source = new EventSource('/api/stats');
+            source.addEventListener('message', receivePushNotification, false);      //This registers the EventHandler for Push-Notifications
     })
 
+    //used in start.html
     .controller('FileCtrl', function($scope, fileFactory) {
+        $scope.msg = {};
         $scope.files = fileFactory.getFiles();
         $scope.fileFactory = fileFactory;
+        //is called, when Push-Notification is received
+        var receivePushNotification = function(msg) {
+            if(msg) {
+                $scope.$apply(function () {
+                    if(JSON.parse(msg.data).update) {       //check if update is necessary
+                        $scope.files = fileFactory.getFiles();
+                        var Response = fileFactory.getSelectedFile();   //get selected Filepath and ID from serve
+                        $scope.selectedFilePath = Response.selectedFilePath;
+                        $scope.selectedFileID = Response.selectedFileID;
+                    }
+                    $scope.msg.status = JSON.parse(msg.data).status;    //Update the status of Server anyway
+                    $scope.msg.error = JSON.parse(msg.data).error;      //Update error status of Server anyway
+                })
+            }
+        }
+
+        var source = new EventSource('/api/stats');
+        source.addEventListener('message', receivePushNotification, false);      //This registers the EventHandler for Push-Notifications
+
     })
 
     .controller('FileUploadCtrl', ['$scope', 'FileUploader', function($scope, FileUploader) {
