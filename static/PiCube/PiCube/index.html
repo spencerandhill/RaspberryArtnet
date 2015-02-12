@@ -29,7 +29,12 @@
 
 </head>
 <body>
-  <!-- Navbar -->
+<!-- AngularJS -->
+<script src="../js/angular-animate.js"></script>
+<script src="app.js"></script>        <!-- Hier wird die eigentliche App geladen mit allen Modulen darin -->
+<script src="../../../socket.io/socket.io.js"></script> <!-- push notifications via socket.io -->
+
+<!-- Navbar -->
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -56,9 +61,5 @@
   </span>
 
   <ng-view></ng-view>
-
-  <!-- AngularJS -->
-  <script src="../js/angular-animate.js"></script>
-  <script src="app.js"></script>        <!-- Hier wird die eigentliche App geladen mit allen Modulen darin -->
 </body>
 </html>

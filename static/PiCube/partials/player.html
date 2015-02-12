@@ -1,7 +1,7 @@
 <!-- Upload File -->
-<div class="container" id="play" ng-controller="FilePlayCtrl">
+<div class="container" id="play">
     <div class="jumbotron">
-        <h3>Player <span class="alert alert-info pull-right" style="font-size:15px">Player Status: {{msg.status}}</span></h3>
+        <h3>Player <span class="alert alert-info pull-right" style="font-size:15px">{{msg.status}}</span></h3>
 
 
         <hr>
@@ -9,15 +9,10 @@
 
         <div ng-show="selectedFilePath">
              <span class="alert alert-success" style="font-size:20px">Selected File: {{selectedFilePath}}
-                 <a href class="btn btn-danger btn-xs" ng-click="removeSelectedFilePath()"><span class="glyphicon glyphicon-remove"></span>Entfernen</a>
-             </span>&#160; <!-- This is a whitespace -->
-
-
-            <span class="alert alert-success" style="font-size:20px">
-                <a href class="btn btn-success btn-xs" ng-click="playFile()"><span class="glyphicon glyphicon-play"></span>Play =)</a>
+                 <a href class="btn btn-danger btn-xs" ng-click="removeSelectedFilePath()"><span class="glyphicon glyphicon-remove">Entfernen</a>
+                 <a href class="btn btn-success btn-xs" ng-click="playFile()"><span class="glyphicon glyphicon-play"></span>Play =)</a>
             </span>
         </div>
         <br>
-
     </div>
 </div>

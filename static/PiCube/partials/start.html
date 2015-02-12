@@ -20,7 +20,6 @@
             <a href class="btn btn-info btn-xs pull-right" ng-click="fileFactory.getFiles();"><span class="glyphicon glyphicon-refresh"></span> Neu laden</a>
         </p>
 
-        <div ng-controller="FileCtrl">
             <div ng-hide="files.length" class="alert alert-warning">Keine Files vorhanden!</div>
             <table ng-show="files.length" class="table">
                 <tr>
@@ -35,11 +34,11 @@
                     <td>{{file.path}}</td>
                     <td>{{file.sizeinMB}} MB</td>
                     <td><a href class="btn btn-success btn-xs" ng-click="fileFactory.selectFile(file.path, file.id);"><span class="glyphicon glyphicon-play"></span> Abspielen</a></td>
-                    <td><a href class="btn btn-danger btn-xs" ng-click="fileFactory.removeFile(file.id);"><span class="glyphicon glyphicon-trash"></span> Entfernen</a> </td>
+                    <td><a href class="btn btn-danger btn-xs" ng-click="fileFactory.removeFile(file.id);"><span class="glyphicon glyphicon-trash"></span> Löschen</a> </td>
                 </tr>
             </table>
-        </div>
 <p>Gesamtanzahl Dateien: {{files.length}}</p>
 </div>
 </div>
 </div>
+

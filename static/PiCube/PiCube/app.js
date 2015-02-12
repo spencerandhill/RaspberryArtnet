@@ -29,7 +29,7 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
         var files = [];
         var selectedFilePath = "";
         var selectedFileID = "";
-       return {
+        return {
 
             getFiles: function() {
                 $http.get('http://localhost:8080/api/files/').then(function (Response) {   //takes all files from the api
@@ -38,39 +38,34 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
                 return files;
             },
 
-           //just for updating files, when push notification comes in with data
-           updateFiles: function(serverMessage){
-               //selectedFilePath = serverMessage.filepath;
-               //selectedFileID = serverMessage.fileid;
-               angular.copy(serverMessage.files, files);
-           },
+            //just for updating files, when push notification comes in with data
+            updateFiles: function(serverMessage){
+                //selectedFilePath = serverMessage.filepath;
+                //selectedFileID = serverMessage.fileid;
+                angular.copy(serverMessage.files, files);
+            },
 
             selectFile: function(filepath, fileid){
-                console.log(filepath);
-                console.log(fileid);
                 selectedFilePath = filepath;
                 selectedFileID = fileid;
                 $http.get("http://localhost:8080/api/select/" + selectedFileID).then(function(Response){
                     selectedFileID = Response.data.selectedFileID;
                     selectedFilePath = Response.data.selectedFilePath;
-                    console.log("respond received");
+                    console.log("respond received, file selected");
                     $location.path("/player");  //redirect to player
                 })
             },
 
-           removeFile: function(fileid){ //deletes a file from server
-            $http.delete("http://localhost:8080/api/files/" + fileid).then(function(Response){
-                angular.copy(Response.data, files);  //Update Data
-            })
-           },
+            removeFile: function(fileid){ //deletes a file from server
+                $http.delete("http://localhost:8080/api/files/" + fileid).then(function(Response){
+                    angular.copy(Response.data, files);  //Update Data
+                })
+            },
 
-           removeSelectedFilePath: function() {
-               $http.delete("http://localhost:8080/api/select").then(function (Response) {
-
-                   selectedFilePath = "";
-                   selectedFileID = "";
-               })
-           },
+            removeSelectedFilePath: function() {    //deselects a file from server
+                $http.delete("http://localhost:8080/api/select").then(function (Response) {
+                })
+            },
 
             getSelectedFile: function(callback) {
                 $http.get("http://localhost:8080/api/getselected").then(function(Response) {
@@ -80,88 +75,41 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
                 })
             },
 
-           getServerStatus: function(callback) {
-             $http.get("http://localhost:8080/api/status").then(function(Response) {
-                 callback(Response.data);
-             })
-           },
-
-           playFile: function() {
-               console.log("play: " + selectedFileID);
-               $http.get("http://localhost:8080/api/play/" + selectedFileID).then(function(Response){}) //ack will come through notification
-           }
+            playFile: function() {
+                console.log("play: " + selectedFileID);
+                $http.get("http://localhost:8080/api/play/" + selectedFileID).then(function(Response){}) //ack will come through notification
+            }
         };
     })
 
-    .controller('FilePlayCtrl', function($scope, fileFactory) {
-        $scope.msg = {};
-        fileFactory.getSelectedFile(function (Response) {
-            if(Response.selectedFileID) {
-                $scope.selectedFilePath = Response.selectedFilePath;
-                $scope.selectedFileID = Response.selectedFileID;
+    //This is the injection of socket.io into the controller
+    //it's just a wrapper to use socket.io from controller
+    .factory('socket', function($rootScope) {
+        var socket = io();
+        return {
+            on: function (eventName, callback) {
+                socket.on(eventName, function () {
+                    var args = arguments;
+                    $rootScope.$apply(function () {
+                        callback.apply(socket, args);
+                    });
+                });
+            },
+
+            emit: function (eventName, data, callback) {
+                socket.emit(eventName, data, function () {
+                    var args = arguments;
+                    $rootScope.$apply(function () {
+                        if (callback) {
+                            callback.apply(socket, args);
+                        }
+                    });
+                });
             }
-        });   //get selected Filepath and ID from serve
-
-        fileFactory.getServerStatus(function(response) {
-            $scope.msg.status = response.status;
-            $scope.msg.error = response.error;
-        })
-
-        $scope.removeSelectedFilePath = function() {    //this should be called from angular
-            fileFactory.removeSelectedFilePath();
-        }
-
-        $scope.playFile = function() {
-            fileFactory.playFile();
-        }
-
-        //is called, when Push-Notification is received
-        var receivePushNotification = function(msg) {
-            console.log("update coming");
-            if(msg) {
-                $scope.$apply(function () {
-                    if(JSON.parse(msg.data).update) {       //check if update is necessary
-                        $scope.files = fileFactory.getFiles();
-                        var Response = fileFactory.getSelectedFile();   //get selected Filepath and ID from serve
-                        $scope.selectedFilePath = Response.selectedFilePath;
-                        $scope.selectedFileID = Response.selectedFileID;
-                    }
-                    $scope.msg.status = JSON.parse(msg.data).status;    //Update the status of Server anyway
-                    $scope.msg.error = JSON.parse(msg.data).error;      //Update error status of Server anyway
-                })
-            }
-        }
-
-        var source = new EventSource('/api/stats');
-            source.addEventListener('message', receivePushNotification, false);      //This registers the EventHandler for Push-Notifications
+        };
     })
 
-    //used in start.html
-    .controller('FileCtrl', function($scope, fileFactory) {
-        $scope.msg = {};
-        $scope.files = fileFactory.getFiles();
-        $scope.fileFactory = fileFactory;
-        //is called, when Push-Notification is received
-        var receivePushNotification = function(msg) {
-            if(msg) {
-                $scope.$apply(function () {
-                    if(JSON.parse(msg.data).update) {       //check if update is necessary
-                        $scope.files = fileFactory.getFiles();
-                        var Response = fileFactory.getSelectedFile();   //get selected Filepath and ID from serve
-                        $scope.selectedFilePath = Response.selectedFilePath;
-                        $scope.selectedFileID = Response.selectedFileID;
-                    }
-                    $scope.msg.status = JSON.parse(msg.data).status;    //Update the status of Server anyway
-                    $scope.msg.error = JSON.parse(msg.data).error;      //Update error status of Server anyway
-                })
-            }
-        }
-
-        var source = new EventSource('/api/stats');
-        source.addEventListener('message', receivePushNotification, false);      //This registers the EventHandler for Push-Notifications
-
-    })
-
+    //controller of upload.html-partial
     .controller('FileUploadCtrl', ['$scope', 'FileUploader', function($scope, FileUploader) {
         var uploader = $scope.uploader = new FileUploader({
             url: '/api/upload',
@@ -213,4 +161,62 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
         };
 
         console.info('uploader', uploader);
-    }]);
+    }])
+
+    //controller of player.html-partial
+    .controller('FilePlayCtrl', function($scope, fileFactory, socket) {
+        $scope.msg = {};
+
+//Init Serverstate and get Serverstate to webapp
+        fileFactory.getSelectedFile(function (Response) {
+            if(Response.selectedFileID) {
+                $scope.selectedFilePath = Response.selectedFilePath;
+                $scope.selectedFileID = Response.selectedFileID;
+            }
+            $scope.msg.status = Response.serverStatus;
+        });   //get selected Filepath, ID and Status from server
+
+//Actions
+        $scope.removeSelectedFilePath = function() {    //this should be called from angular
+            $scope.selectedFilePath = "";
+            $scope.selectedFileID = "";
+
+            fileFactory.removeSelectedFilePath(function(result) {
+                if(result != true) {
+                    $scope.msg.status = "Error deselecting file!";
+                }
+            });
+        }
+
+        $scope.playFile = function() {
+            fileFactory.playFile();
+        }
+
+
+//PushNotfications
+        socket.on('status', function (data) {
+            console.log("status: " + data.message);
+            $scope.msg.status = data.message;
+        });
+
+        socket.on('error', function (data) {
+           $scope.msg.error = data.message;
+        });
+
+        socket.on('fileselected', function (data) {
+            fileFactory.selectedFilePath = data.selectedFilePath;
+            fileFactory.selectedFileID = data.selectedFileID;
+            console.log("fileFactory: " + fileFactory.selectedFilePath);
+            console.log("fileFactory: " + fileFactory.selectedFileID);
+
+            $scope.selectedFilePath = data.selectedFilePath;
+            $scope.selectedFileID = data.selectedFileID;
+        })
+    })
+
+    //controller of start.html-partial
+    .controller('FileCtrl', function($scope, fileFactory) {
+        $scope.msg = {};
+        $scope.files = fileFactory.getFiles();
+        $scope.fileFactory = fileFactory;
+    })

@@ -13,6 +13,8 @@
     "pcap-parser": "0.2.1",
     "multer": "0.1.6",
     "walk": "2.3.9",
-    "node-uuid": "1.4.2"
+    "node-uuid": "1.4.2",
+    "socket.io": "1.2.1",
+    "socket.io-client": "1.2.1"
     }
 }
