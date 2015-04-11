@@ -2266,7 +2266,7 @@ function jqLitePatchJQueryRemove(name, dispatchThis, filterElems, getterIfNoArgu
 
   function removePatch(param) {
     // jshint -W040
-    var list = filterElems && param ? [this.filter(param)] : [this],
+    var list = filterElems && param ? [this.filter_t(param)] : [this],
         fireEvent = dispatchThis,
         set, setIndex, setLength,
         element, childIndex, childLength, children;
@@ -14664,7 +14664,7 @@ function $WindowProvider(){
  *
  *
  * For more information about how angular filters work, and how to create your own filters, see
- * {@link guide/filter Filters} in the Angular Developer Guide.
+ * {@link guide/filter_t Filters} in the Angular Developer Guide.
  */
 
 /**
@@ -14755,7 +14755,7 @@ function $FilterProvider($provide) {
 }
 
 /**
- * @ngdoc filter
+ * @ngdoc filter_t
  * @name filter
  * @kind function
  *
@@ -14802,38 +14802,38 @@ function $FilterProvider($provide) {
  *     insensitive way.
  *
  * @example
-   <example>
-     <file name="index.html">
-       <div ng-init="friends = [{name:'John', phone:'555-1276'},
-                                {name:'Mary', phone:'800-BIG-MARY'},
-                                {name:'Mike', phone:'555-4321'},
-                                {name:'Adam', phone:'555-5678'},
-                                {name:'Julie', phone:'555-8765'},
-                                {name:'Juliette', phone:'555-5678'}]"></div>
+ <example>
+ <file name="index.html">
+ <div ng-init="friends = [{name:'John', phone:'555-1276'},
+ {name:'Mary', phone:'800-BIG-MARY'},
+ {name:'Mike', phone:'555-4321'},
+ {name:'Adam', phone:'555-5678'},
+ {name:'Julie', phone:'555-8765'},
+ {name:'Juliette', phone:'555-5678'}]"></div>
 
-       Search: <input ng-model="searchText">
-       <table id="searchTextResults">
-         <tr><th>Name</th><th>Phone</th></tr>
-         <tr ng-repeat="friend in friends | filter:searchText">
-           <td>{{friend.name}}</td>
-           <td>{{friend.phone}}</td>
-         </tr>
-       </table>
-       <hr>
-       Any: <input ng-model="search.$"> <br>
-       Name only <input ng-model="search.name"><br>
-       Phone only <input ng-model="search.phone"><br>
-       Equality <input type="checkbox" ng-model="strict"><br>
-       <table id="searchObjResults">
-         <tr><th>Name</th><th>Phone</th></tr>
-         <tr ng-repeat="friendObj in friends | filter:search:strict">
-           <td>{{friendObj.name}}</td>
-           <td>{{friendObj.phone}}</td>
-         </tr>
-       </table>
-     </file>
-     <file name="protractor.js" type="protractor">
-       var expectFriendNames = function(expectedNames, key) {
+ Search: <input ng-model="searchText">
+ <table id="searchTextResults">
+ <tr><th>Name</th><th>Phone</th></tr>
+ <tr ng-repeat="friend in friends | filter:searchText">
+ <td>{{friend.name}}</td>
+ <td>{{friend.phone}}</td>
+ </tr>
+ </table>
+ <hr>
+ Any: <input ng-model="search.$"> <br>
+ Name only <input ng-model="search.name"><br>
+ Phone only <input ng-model="search.phone"><br>
+ Equality <input type="checkbox" ng-model="strict"><br>
+ <table id="searchObjResults">
+ <tr><th>Name</th><th>Phone</th></tr>
+ <tr ng-repeat="friendObj in friends | filter:search:strict">
+ <td>{{friendObj.name}}</td>
+ <td>{{friendObj.phone}}</td>
+ </tr>
+ </table>
+ </file>
+ <file name="protractor.js" type="protractor">
+ var expectFriendNames = function(expectedNames, key) {
          element.all(by.repeater(key + ' in friends').column(key + '.name')).then(function(arr) {
            arr.forEach(function(wd, i) {
              expect(wd.getText()).toMatch(expectedNames[i]);
@@ -14841,7 +14841,7 @@ function $FilterProvider($provide) {
          });
        };
 
-       it('should search across all fields when filtering with a string', function() {
+ it('should search across all fields when filtering with a string', function() {
          var searchText = element(by.model('searchText'));
          searchText.clear();
          searchText.sendKeys('m');
@@ -14852,13 +14852,13 @@ function $FilterProvider($provide) {
          expectFriendNames(['John', 'Julie'], 'friend');
        });
 
-       it('should search in specific fields when filtering with a predicate object', function() {
+ it('should search in specific fields when filtering with a predicate object', function() {
          var searchAny = element(by.model('search.$'));
          searchAny.clear();
          searchAny.sendKeys('i');
          expectFriendNames(['Mary', 'Mike', 'Julie', 'Juliette'], 'friendObj');
        });
-       it('should use a equal comparison when comparator is true', function() {
+ it('should use a equal comparison when comparator is true', function() {
          var searchName = element(by.model('search.name'));
          var strict = element(by.model('strict'));
          searchName.clear();
@@ -14866,8 +14866,8 @@ function $FilterProvider($provide) {
          strict.click();
          expectFriendNames(['Julie'], 'friendObj');
        });
-     </file>
-   </example>
+ </file>
+ </example>
  */
 function filterFilter() {
   return function(array, expression, comparator) {
@@ -15412,7 +15412,7 @@ function dateFilter($locale) {
 
 
 /**
- * @ngdoc filter
+ * @ngdoc filter_t
  * @name json
  * @kind function
  *
@@ -15427,16 +15427,16 @@ function dateFilter($locale) {
  *
  *
  * @example
-   <example>
-     <file name="index.html">
-       <pre>{{ {'name':'value'} | json }}</pre>
-     </file>
-     <file name="protractor.js" type="protractor">
-       it('should jsonify filtered objects', function() {
+ <example>
+ <file name="index.html">
+ <pre>{{ {'name':'value'} | json }}</pre>
+ </file>
+ <file name="protractor.js" type="protractor">
+ it('should jsonify filtered objects', function() {
          expect(element(by.binding("{'name':'value'}")).getText()).toMatch(/\{\n  "name": ?"value"\n}/);
        });
-     </file>
-   </example>
+ </file>
+ </example>
  *
  */
 function jsonFilter() {
@@ -15468,7 +15468,7 @@ var lowercaseFilter = valueFn(lowercase);
 var uppercaseFilter = valueFn(uppercase);
 
 /**
- * @ngdoc filter
+ * @ngdoc filter_t
  * @name limitTo
  * @kind function
  *
@@ -15486,39 +15486,39 @@ var uppercaseFilter = valueFn(uppercase);
  *     had less than `limit` elements.
  *
  * @example
-   <example module="limitToExample">
-     <file name="index.html">
-       <script>
-         angular.module('limitToExample', [])
-           .controller('ExampleController', ['$scope', function($scope) {
+ <example module="limitToExample">
+ <file name="index.html">
+ <script>
+ angular.module('limitToExample', [])
+ .controller('ExampleController', ['$scope', function($scope) {
              $scope.numbers = [1,2,3,4,5,6,7,8,9];
              $scope.letters = "abcdefghi";
              $scope.numLimit = 3;
              $scope.letterLimit = 3;
            }]);
-       </script>
-       <div ng-controller="ExampleController">
-         Limit {{numbers}} to: <input type="number" step="1" ng-model="numLimit">
-         <p>Output numbers: {{ numbers | limitTo:numLimit }}</p>
-         Limit {{letters}} to: <input type="number" step="1" ng-model="letterLimit">
-         <p>Output letters: {{ letters | limitTo:letterLimit }}</p>
-       </div>
-     </file>
-     <file name="protractor.js" type="protractor">
-       var numLimitInput = element(by.model('numLimit'));
-       var letterLimitInput = element(by.model('letterLimit'));
-       var limitedNumbers = element(by.binding('numbers | limitTo:numLimit'));
-       var limitedLetters = element(by.binding('letters | limitTo:letterLimit'));
+ </script>
+ <div ng-controller="ExampleController">
+ Limit {{numbers}} to: <input type="number" step="1" ng-model="numLimit">
+ <p>Output numbers: {{ numbers | limitTo:numLimit }}</p>
+ Limit {{letters}} to: <input type="number" step="1" ng-model="letterLimit">
+ <p>Output letters: {{ letters | limitTo:letterLimit }}</p>
+ </div>
+ </file>
+ <file name="protractor.js" type="protractor">
+ var numLimitInput = element(by.model('numLimit'));
+ var letterLimitInput = element(by.model('letterLimit'));
+ var limitedNumbers = element(by.binding('numbers | limitTo:numLimit'));
+ var limitedLetters = element(by.binding('letters | limitTo:letterLimit'));
 
-       it('should limit the number array to first three items', function() {
+ it('should limit the number array to first three items', function() {
          expect(numLimitInput.getAttribute('value')).toBe('3');
          expect(letterLimitInput.getAttribute('value')).toBe('3');
          expect(limitedNumbers.getText()).toEqual('Output numbers: [1,2,3]');
          expect(limitedLetters.getText()).toEqual('Output letters: abc');
        });
 
-       // There is a bug in safari and protractor that doesn't like the minus key
-       // it('should update the output when -3 is entered', function() {
+ // There is a bug in safari and protractor that doesn't like the minus key
+ // it('should update the output when -3 is entered', function() {
        //   numLimitInput.clear();
        //   numLimitInput.sendKeys('-3');
        //   letterLimitInput.clear();
@@ -15527,7 +15527,7 @@ var uppercaseFilter = valueFn(uppercase);
        //   expect(limitedLetters.getText()).toEqual('Output letters: ghi');
        // });
 
-       it('should not exceed the maximum size of input array', function() {
+ it('should not exceed the maximum size of input array', function() {
          numLimitInput.clear();
          numLimitInput.sendKeys('100');
          letterLimitInput.clear();
@@ -15535,8 +15535,8 @@ var uppercaseFilter = valueFn(uppercase);
          expect(limitedNumbers.getText()).toEqual('Output numbers: [1,2,3,4,5,6,7,8,9]');
          expect(limitedLetters.getText()).toEqual('Output letters: abcdefghi');
        });
-     </file>
-   </example>
+ </file>
+ </example>
  */
 function limitToFilter(){
   return function(input, limit) {

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de" id="ng-app" ng-app="picube" xmlns="http://www.w3.org/1999/html">  <!-- sagt angular, wie das module heißt ('picube') -->
+<head>
+ <meta charset="utf8" />
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PiCube</title>
+  <link rel="icon" href="favicon/favicon.ico">
+
+<!-- It's important in which order the scripts load -->
+
+  <!-- Fix for old browsers -->
+  <script src="js/oldbrowserfix/es5-shim.min.js"></script>
+  <script src="js/oldbrowserfix/es5-sham.min.js"></script>
+  <script src="js/oldbrowserfix/console-sham.js"></script>
+
+  <!-- Angular-Sources -->
+  <script src="js/angular.js"></script>
+  <script src="js/angular-route.js"></script>
+  <script src="js/angular-file-upload.js"></script>
+  <script src="js/file-upload-controller.js"></script>
+
+  <!-- FileUpload Sources -->
+  <script src="js/jquery-1.11.2.min.js"></script>
+  <link rel="stylesheet" href="css/fileinput.min.css" media="all" type="text/css">
+  <script src="js/fileinput.min.js" type="text/javascript"></script>
+  <script src="js/angular-file-upload.js"></script>
+  <script src="js/file-upload-controller.js"></script>
+
+  <!-- Style Sources (Bootstrap and custom) -->
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- App and Push Notification Sources-->
+  <script src="app.js"></script>        <!-- Hier wird die eigentliche App geladen mit allen Modulen darin -->
+  <script src="../socket.io/socket.io.js"></script> <!-- push notifications via socket.io -->
+
+</head>
+<body>
+<!-- Navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Navigation ein-/ausblenden</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#/">Start</a></li>
+            <li><a href="#/upload">Datei hochladen</a></li>
+            <li><a href="#/player">Player</a></li>
+            <li><a href="#/recorder">Rekorder</a></li>
+          </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Welcome-Greetings -->
+  <span class="blacktext" style=" text-align: center">
+    <br><h1>Welcome to PiCube!</h1><br>
+  </span>
+
+<!-- Injection of specific partials -->
+  <ng-view></ng-view>
+</body>
+</html>

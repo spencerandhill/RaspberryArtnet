@@ -7,17 +7,22 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
         $routeProvider
             .when('/upload',
             {
-                templateUrl: "../partials/upload.html",
+                templateUrl: "partials/upload.html",
                 controller: "FileUploadCtrl"
             })
             .when('/player',
             {
-                templateUrl: "../partials/player.html",
+                templateUrl: "partials/player.html",
                 controller: "FilePlayCtrl"
+            })
+            .when('/recorder',
+            {
+                templateUrl: "partials/recorder.html",
+                controller: "FileRecordCtrl"
             })
             .when('/',
             {
-                templateUrl: "../partials/start.html",
+                templateUrl: "partials/start.html",
                 controller: "FileCtrl"
             })
             .otherwise({
@@ -32,7 +37,7 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
         return {
 
             getFiles: function() {
-                $http.get('http://localhost:8080/api/files/').then(function (Response) {   //takes all files from the api
+                $http.get('/api/files/').then(function (Response) {   //takes all files from the api
                     angular.copy(Response.data, files);  //Update Data
                 });
                 return files;
@@ -48,27 +53,33 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
             selectFile: function(filepath, fileid){
                 selectedFilePath = filepath;
                 selectedFileID = fileid;
-                $http.get("http://localhost:8080/api/select/" + selectedFileID).then(function(Response){
+                $http.get("/api/select/" + selectedFileID).then(function(Response){
                     selectedFileID = Response.data.selectedFileID;
                     selectedFilePath = Response.data.selectedFilePath;
-                    console.log("respond received, file selected");
+                    console.log("File: " + selectedFileID + " selected");
                     $location.path("/player");  //redirect to player
                 })
             },
 
             removeFile: function(fileid){ //deletes a file from server
-                $http.delete("http://localhost:8080/api/files/" + fileid).then(function(Response){
+               console.log("Remove");
+                $http.delete("/api/files/" + fileid).then(function(Response){
                     angular.copy(Response.data, files);  //Update Data
                 })
             },
 
             removeSelectedFilePath: function() {    //deselects a file from server
-                $http.delete("http://localhost:8080/api/select").then(function (Response) {
+                $http.delete("/api/select").then(function (Response) {
+                    if(Response.data == "deselected")
+                    {
+                        selectedFileID = "";
+                        selectedFilePath = "";
+                    }
                 })
             },
 
             getSelectedFile: function(callback) {
-                $http.get("http://localhost:8080/api/getselected").then(function(Response) {
+                $http.get("/api/getselected").then(function(Response) {
                     selectedFileID = Response.data.selectedFileID;
                     selectedFilePath = Response.data.selectedFilePath;
                     callback(Response.data);
@@ -77,7 +88,24 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
 
             playFile: function() {
                 console.log("play: " + selectedFileID);
-                $http.get("http://localhost:8080/api/play/" + selectedFileID).then(function(Response){}) //ack will come through notification
+                $http.get("/api/play/" + selectedFileID).then(function(Response){}) //ack will come through notification
+            },
+
+            startRecordFile: function(FileRecordName, callback) {
+                console.log("record start: " + FileRecordName);
+                $http.get("/api/startrecord/" + FileRecordName).then(function(Response) {
+                    console.log("response: " + Response);
+
+                    callback(true);
+                })
+            },
+
+            stopRecordFile: function(FileRecordName, callback) {
+                console.log("record stop: " + FileRecordName);
+                $http.get("/api/stoprecord/" + FileRecordName).then(function(Response) {
+                    console.log("response: " + Response);
+                    callback(true);
+                })
             }
         };
     })
@@ -164,8 +192,67 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
     }])
 
     //controller of player.html-partial
+    .controller('FileRecordCtrl', function($scope, fileFactory, socket, $timeout) {
+
+        $scope.RecorderMsg = {};
+        $scope.recordingState;
+
+        $scope.startRecord = function() {
+            console.log($scope.selectedRecordFilePath);
+            $scope.recordingState = "recording";
+            $scope.recordStop = "";
+
+            fileFactory.startRecordFile(encodeURIComponent($scope.selectedRecordFilePath), function(result) {
+                if(result==true)
+                    $scope.recordingState = "recording";
+                else
+                    $scope.recordingState = "";
+            });
+        }
+
+        $scope.stopRecord = function() {
+            console.log("record stop");
+            $scope.recordingState = "";
+
+            fileFactory.stopRecordFile(encodeURIComponent($scope.selectedRecordFilePath), function(result) {
+                if(result == true)
+                {
+                    $scope.recordingState="";
+                    $scope.recordStop = "recordStop";
+
+                    //Hide info-bar after 10 Seconds
+                    $timeout(function(){
+                        $scope.recordStop = "";
+                    },10000);
+                }
+            })
+        }
+
+
+//PushNotfications
+        socket.on('status', function (data) {
+            console.log("status: " + data.message);
+            $scope.PlayerMsg.status = data.message;
+        });
+
+        socket.on('error', function (data) {
+           $scope.PlayerMsg.error = data.message;
+        });
+
+        socket.on('fileselected', function (data) {
+            fileFactory.selectedFilePath = data.selectedFilePath;
+            fileFactory.selectedFileID = data.selectedFileID;
+
+            console.log("selectedFilePath: " + $scope.selectFilePath);
+            console.log("selectedFileID: " + $scope.selectFileID);
+            $scope.selectedFilePath = data.selectedFilePath;
+            $scope.selectedFileID = data.selectedFileID;
+        })
+    })
+
+    //controller of player.html-partial
     .controller('FilePlayCtrl', function($scope, fileFactory, socket) {
-        $scope.msg = {};
+        $scope.PlayerMsg = {};
 
 //Init Serverstate and get Serverstate to webapp
         fileFactory.getSelectedFile(function (Response) {
@@ -173,7 +260,7 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
                 $scope.selectedFilePath = Response.selectedFilePath;
                 $scope.selectedFileID = Response.selectedFileID;
             }
-            $scope.msg.status = Response.serverStatus;
+            $scope.PlayerMsg.status = Response.serverStatus;
         });   //get selected Filepath, ID and Status from server
 
 //Actions
@@ -183,7 +270,7 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
 
             fileFactory.removeSelectedFilePath(function(result) {
                 if(result != true) {
-                    $scope.msg.status = "Error deselecting file!";
+                    $scope.PlayerMsg.status = "Error deselecting file!";
                 }
             });
         }
@@ -196,19 +283,19 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
 //PushNotfications
         socket.on('status', function (data) {
             console.log("status: " + data.message);
-            $scope.msg.status = data.message;
+            $scope.PlayerMsg.status = data.message;
         });
 
         socket.on('error', function (data) {
-           $scope.msg.error = data.message;
+            $scope.PlayerMsg.error = data.message;
         });
 
         socket.on('fileselected', function (data) {
             fileFactory.selectedFilePath = data.selectedFilePath;
             fileFactory.selectedFileID = data.selectedFileID;
-            console.log("fileFactory: " + fileFactory.selectedFilePath);
-            console.log("fileFactory: " + fileFactory.selectedFileID);
 
+            console.log("selectedFilePath: " + $scope.selectFilePath);
+            console.log("selectedFileID: " + $scope.selectFileID);
             $scope.selectedFilePath = data.selectedFilePath;
             $scope.selectedFileID = data.selectedFileID;
         })
@@ -216,7 +303,6 @@ angular.module('picube', ['angularFileUpload', 'ngRoute'])
 
     //controller of start.html-partial
     .controller('FileCtrl', function($scope, fileFactory) {
-        $scope.msg = {};
         $scope.files = fileFactory.getFiles();
         $scope.fileFactory = fileFactory;
     })

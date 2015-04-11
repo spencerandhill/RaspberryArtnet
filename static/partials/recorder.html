@@ -1,0 +1,59 @@
+<!-- Upload File -->
+<div class="container" id="play">
+    <div class="jumbotron">
+        <h3>Rekorder <span class="alert alert-info pull-right" style="font-size:15px">{{RecorderMsg.status}}</span></h3>
+        <hr>
+
+        <div ng-hide="recordingState">
+            <div ng-hide="recordStop">
+                <h3>
+                    <span class="alert alert-success pull-right" style="font-size:15px">
+                        Bereit zum aufnehmen <span class="glyphicon glyphicon-thumbs-up" style="font-size: 1.2em"></span>
+                    </span>
+                </h3>
+            </div>
+        </div>
+
+        <div ng-show="recordStop">
+            <h3>
+                <span class="alert alert-info pull-right" style="font-size:15px">
+                    Record gestoppt <span class="glyphicon glyphicon-ok-circle" style="font-size: 1.2em"></span>
+                </span>
+            </h3>
+        </div>
+
+        <div ng-show="recordingState">
+            <h3>
+                <span class="alert alert-warning pull-right" style="font-size:15px">
+                    Record gestartet <span class="glyphicon glyphicon-record" style="font-size: 1.2em"></span>
+                </span>
+            </h3>
+        </div>
+
+        <div class="container">
+            <p style="font-size: 15px">Bitte Dateinamen eingeben</p>
+            <form name="datapath">
+                <input type="text" ng-model="selectedRecordFilePath" ng-disabled="recordingState" id="searchbox">
+            </form>
+
+            <br/>
+            <p style="font-size:15px">Dateipfad: /uploads/{{selectedRecordFilePath}}.pcap}}</p>
+        </div>
+
+        <span ng-hide="selectedRecordFilePath" class="alert alert-warning" style="font-size:20px">Keinen Dateinamen eingegeben =(</span>
+
+        <div ng-show="selectedRecordFilePath">
+            <div ng-hide="recordingState">
+                <span class="alert alert-success" style="font-size:20px">Selected File: /uploads/{{selectedRecordFilePath}}.pcap
+                    <a href class="btn btn-success btn-xs" ng-click="startRecord()"><span class="glyphicon glyphicon-record"></span> Record</a>
+                </span>
+            </div>
+            <div ng-show="recordingState">
+                <span class="alert alert-success" style="font-size:20px">Selected File: /uploads/{{selectedRecordFilePath}}.pcap
+                    <a href class="btn btn-danger btn-xs" ng-click="stopRecord()"><span class="glyphicon glyphicon-ban-circle"></span> Stop Record</a>
+                </span>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
