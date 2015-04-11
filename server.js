@@ -10,6 +10,7 @@
     var uuid = require('node-uuid');            // used to generate uuid's to identify files
     var Reader = require('./readpcap.js');      // used to read a pcap-file and get the buffer back
     var Sender = require('./sender.js');        // used to send packages through network
+    var Recorder = require('./recorder.js');    // used to record packages from network
     var io = require('socket.io')(http);        // used for sending push notifications to clients
 
     var uploadFolder = 'static/uploads';        // Define Upload-Folder for all Actions with Files
@@ -25,7 +26,7 @@
 //Serverstates
     var selectedFileID = "";
     var selectedFilePath = "";
-    var DEFAULTSTATUS = "Bereit, wenn du's bist ;)";
+    var DEFAULTSTATUS = "Bereit, wenn du's bist! ;)";
     var serverStatus = DEFAULTSTATUS;
     var serverError = "";
 
@@ -65,7 +66,7 @@
         }
     }));
 
-// Functions ======================================================================
+// Functions ==========================================================================
 
 //Push Notifications =====================
     //Log connected users on screen, nothing more -> unnecessary
@@ -92,7 +93,6 @@
             }
             default: {
                 console.log("UPDATE_ALL");
-                console.log("Serverstatus: " + serverStatus);
                     io.sockets.emit('status', {message: serverStatus});
                     io.sockets.emit('error', {message: serverError});
                     io.sockets.emit('fileselected', {selectedFilePath: selectedFilePath, selectedFileID: selectedFileID});
@@ -122,8 +122,8 @@
                         next();
                     }
                     else {
-                        FileLookup(root + '/' + file.name, function(result) {   //check if this file is already known
-                            if(result === -1) { //if result === -1 the file is not in files[]
+                        FileLookup(root + '/' + file.name, function(result_ID) {   //check if this file is already known
+                             if(result_ID == -1) { //if result === -1 the file is not in files[]
                                 var fileid = uuid.v4(); //generate an id for the file
                                 var filesizeinMB = Number((stats["size"] / 1000000.0).toFixed(2));  //get the filesize from stats['size']
 
@@ -162,12 +162,12 @@
     }
 
     //checks, if a File is already in files[] or not
-    //if not -1 is returned, otherwise the index
+    //if not -1 is returned, otherwise the file-id
     var FileLookup = function(filepath, callback) {
         var index = -1;
         files.forEach(function(item) {
-            if(item['path'] === filepath) {
-                index = 1;
+            if(item['path'] == filepath) {  //found a file
+                index = item['id'];         //return the fileid
             }
         });
         callback(index);
@@ -176,6 +176,7 @@
     //removes a file from disk
     var removeFile = function(filePath, callback) {
         fs.unlink(filePath, function(err) {});
+        checkFilesExistence();  //check if every file in files[] is still available
     }
 
     //checks, if every file in files[] is still available on disk
@@ -194,63 +195,93 @@
     }
 
 //Sending Packages =====================
-    //Read and send pcap-file
-    var readAndSend = function(datapath, callback) {
-        Reader.read(datapath, function(content) {
-            packagesLength = content.length;
-            serverStatus = packagesLength + " Packages read";
+//Read and send pcap-file
+var readAndSend = function(datapath, callback) {
+    Reader.read(datapath, function(content) {
+        packagesLength = content.length;
+        serverStatus = packagesLength + " Packages read";
+        sendPushNotification(UPDATE_STATUS);
+        var sender = new Sender(content, '192.168.120.170', 6454);
+
+        // Event-Listener
+        sender.on('openStarted', function() {
+            serverStatus = "sending packages";
             sendPushNotification(UPDATE_STATUS);
-            var sender = new Sender(content, 'localhost', 6454);
-
-            // Event-Listener
-            sender.on('openStarted', function() {
-                serverStatus = "File opened";
-                sendPushNotification(UPDATE_STATUS);
-            })
-
-            sender.on('packageSend', function(packagenumber) {
-                serverStatus = "Sending Package: " + packagenumber;
-                sendPushNotification(UPDATE_STATUS);
-            })
-
-            sender.on('end', function(length) {
-                serverStatus = length + " Packages sent";
-                sendPushNotification(UPDATE_STATUS);
-                callback(length);
-            })
-
-            sender.on('error', function(err) {
-                serverError = err;
-                sendPushNotification(UPDATE_ERROR);
-            })
         })
-    }
 
-// routes ======================================================================
-    // api ---------------------------------------------------------------------
-    // get all files
+        sender.on('packageSend', function(packagenumber) {
+            serverStatus = "sending packages";
+            sendPushNotification(UPDATE_STATUS);
+        })
+
+        sender.on('end', function(length) {
+            serverStatus = length + " Packages sent";
+            sendPushNotification(UPDATE_STATUS);
+            callback(length);
+        })
+
+        sender.on('error', function(err) {
+            serverError = err;
+            sendPushNotification(UPDATE_ERROR);
+        })
+    })
+}
+
+//Recording Packages ===================
+//Record pcap-file
+var recordPackages = function(iface, filename, packagelimit, callback) {
+    //Create new Recorder-Object
+    var recorder = new Recorder(iface, filename, packagelimit, callback);
+
+    //Event-Listener
+    recorder.on('start', function() {
+        serverStatus = 'recording';
+        sendPushNotification(UPDATE_STATUS);
+    })
+
+    recorder.on('err', function(data) {
+        serverError = data;
+        sendPushNotification(UPDATE_ERROR);
+    })
+
+    recorder.on('err_filepath', function(err) {
+        serverError = err;
+        sendPushNotification(UPDATE_ERROR);
+    })
+
+    recorder.on('err_finished', function(code) {
+        serverError = 'not sure what happened. Recorder returns: ' + code;
+        sendPushNotification(UPDATE_ERROR);
+    })
+
+    recorder.on('finished', function() {
+        serverStatus = 'Recording finished =)';
+        sendPushNotification(UPDATE_STATUS);
+    })
+}
+
+var stopRecord = function() {
+    recorder.stopRecord();
+}
+
+// routes ===========================================================================
+    //api ---------------------------------------------------------------------------
+    //get all files
     app.get('/api/files', function(req, res, next) {
         getFolderContent(function(files) {
             res.json(files)
         });
     });
 
-    //initially get selected Filepath and ID
-    app.get('/api/getselected', function(req, res, next) {
-        res.send({selectedFileID: selectedFileID, selectedFilePath: selectedFilePath, serverStatus: serverStatus});
-    });
-
-    // delete a file
+    //delete a file
     app.delete('/api/files/:file_id', function(req, res, next) {
         getFilePath(req.params.file_id, function(filepath) {
             removeFile(filepath);
-            getFolderContent(function(files) {
-                res.json(files);
-            })
+            sendPushNotification(UPDATE_FILESELECTED);
         })
     });
 
-    // upload a file
+    //upload a file
     app.post('/api/upload', function (req, res) {
         if (req.files.file.originalname.split('.').pop() == 'pcap')  //check, if extension is == 'pcap'
         {                                                       //valid pcap-file
@@ -297,7 +328,12 @@
         res.send("deselected");
     });
 
-    // play a file
+    //initially get selected Filepath and ID
+    app.get('/api/getselected', function(req, res, next) {
+        res.send({selectedFileID: selectedFileID, selectedFilePath: selectedFilePath, serverStatus: serverStatus});
+    });
+
+    //play a file
     app.get('/api/play/:file_id', function(req, res, next) {
         getFilePath(req.params.file_id, function(filepath) {
             if(filepath != "error") {
@@ -324,13 +360,30 @@
        })
     });
 
+    //start record a file
+    app.get('/api/startrecord/:file_name', function(req, res, next) {
+        console.log("Record " + req.params.file_name + " started");
+        res.send({recordFileID: 123, recordFilePath: req.params.file_name, state: "recordingStart"});
+    });
 
-// init & start server (start server with "node server.js") ======================================
+    //stop record a file
+    app.get('/api/stoprecord/:file_name', function(req, res, next) {
+        console.log("Record " + req.params.file_name + " stopped");
+        res.send({recordFileID: 123, recordFilePath: req.params.file_name, state: "recordingStop"});
+    });
+
+// init & start server (start server with "node server.js") ===========================
 //Init =====================
     //Read Folder Content
     getFolderContent(function(content) {
         files = content;
     });
+
+    //recordPackages('eth0','hansdieter.pcap');
+
+setTimeout(function() {
+    stopRecord();
+},50000);
 
     //Start Server
     http.listen(8080);
