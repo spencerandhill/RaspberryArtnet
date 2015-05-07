@@ -1,20 +1,28 @@
 {
-  "name"         : "RaspberryArtnet",
-  "version"      : "0.0.1",
-  "description"  : "Simple API for AngularJS-Frontend of RaspberryArtnet",
-  "main"         : "server.js",
-  "author"       : "Jan Rathmer",
-  "keywords": ["Artnet", "RaspberryPi", "AngularJS", "NodeJS", "ExpressJS", "ArtDMX"],
-  "dependencies" : {
-    "express"    : "~4.7.2",
-    "morgan"     : "~1.2.2",
+  "name": "RaspberryArtnet",
+  "version": "0.0.1",
+  "description": "Simple API for AngularJS-Frontend of RaspberryArtnet",
+  "main": "server.js",
+  "author": "Jan Rathmer",
+  "keywords": [
+    "Artnet",
+    "RaspberryPi",
+    "AngularJS",
+    "NodeJS",
+    "ExpressJS",
+    "ArtDMX"
+  ],
+  "dependencies": {
     "body-parser": "~1.5.2",
+    "cap": "0.0.12",
+    "express": "~4.7.2",
     "method-override": "~2.1.2",
-    "pcap-parser": "0.2.1",
+    "morgan": "~1.2.2",
     "multer": "0.1.6",
-    "walk": "2.3.9",
     "node-uuid": "1.4.2",
+    "pcap-parser": "0.2.1",
     "socket.io": "1.2.1",
-    "socket.io-client": "1.2.1"
-    }
+    "socket.io-client": "1.2.1",
+    "walk": "2.3.9"
+  }
 }
