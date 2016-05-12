@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "body-parser": "~1.5.2",
-    "cap": "0.0.12",
+    "cap": "0.1.1",
     "express": "~4.7.2",
     "method-override": "~2.1.2",
     "morgan": "~1.2.2",
